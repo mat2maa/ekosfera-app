@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+  <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/index.css"/>
+  <title>Екосфера</title>
+</head>
+<body>
+<div data-role="page"><!-- /page -->
+
+  <div data-role="header" data-position="fixed">
+    <h1>Екосфера</h1>
+    <a href="#" data-icon="carat-l" class="ui-btn-left" id="logout">Log out</a>
+  </div>
+  <!-- /header -->
+
+  <div role="main" class="ui-content">
+    <div class="news-posts">
+      <ul class="posts-list" data-role="listview" class="ui-listview">
+      </ul>
+    </div>
+  </div>
+  <!-- /content -->
+
+  <div data-role="footer" data-position="fixed">
+    <h4>Page Footer</h4>
+  </div>
+  <!-- /footer -->
+
+</div>
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/jquery.serialize-object.compiled.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+  app.initialize();
+</script>
+<script type="text/javascript" src="js/core.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
