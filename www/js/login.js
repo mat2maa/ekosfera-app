@@ -12,6 +12,7 @@
 
     bindEvents: function () {
       $('#login').on('submit', function () {
+        console.log("form/submit");
         Core.login.authenticate.onSubmit($(this));
         return false;
       });
@@ -26,9 +27,13 @@
 
     authenticate: {
       onSubmit: function (form_obj) {
+        console.log("form/onSubmit");
         var ajax_url = form_obj.attr('action'),
           email = $('#login').serializeObject().user.email,
           password = $('#login').serializeObject().user.password;
+        console.log("ajax_url: " + ajax_url);
+        console.log("email: " + email);
+        console.log("password: " + password);
         Core.api.submit(ajax_url, email, password,
           {
             onSuccess: Core.login.authenticate.onSuccess,
@@ -40,28 +45,29 @@
       },
 
       onSuccess: function (data) {
+        console.log("form/onSuccess");
+        console.log(data);
+        console.log(data.token);
         Core.auth.authToken.set(data.token, 30);
-        window.location = 'index.html';
+//        window.location = 'index.html';
       },
 
       onError: function (data) {
-        var error = JSON.parse(data.responseText, function (key, value) {
-          var type;
-          if (value && typeof value === 'object') {
-            type = value.type;
-            if (typeof type === 'string' && typeof window[type] === 'function') {
-              return new (window[type])(value);
-            }
-          }
-          return value;
-        });
+        console.log("form/onError");
+        console.log(data.responseText);
+        var error = data.responseText;
+        console.log(error);
         $('.error-msg').html("<div class='message'>" + error.message + "</div>");
       },
 
       onDenied: function (data) {
+        console.log("form/onDenied");
+        console.log(data);
       },
 
       onComplete: function (data) {
+        console.log("form/onComplete");
+        console.log(data);
       }
     }
 
