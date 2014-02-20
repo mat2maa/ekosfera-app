@@ -27,10 +27,18 @@
 
     getNewsPosts: function(callback) {
       var auth_token = Core.auth.authToken.get();
+      var ua = navigator.userAgent.toLowerCase();
+      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+      var host = '';
+      if(isAndroid) {
+        host = '10.0.2.2';
+      } else {
+        host = 'localhost';
+      }
 
       $.ajax({
         type: "GET",
-        url: "http://localhost:3000/api/news_posts",
+        url: "http://" + host + ":3000/api/news_posts",
         cache: false,
         data: {auth_token: auth_token},
         success: function (data) {

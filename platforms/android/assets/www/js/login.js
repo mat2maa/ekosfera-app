@@ -54,8 +54,11 @@
 
       onError: function (data) {
         console.log("form/onError");
-        console.log(data.responseText);
-        var error = data.responseText;
+        console.log("readyState: " + data.readyState);
+        console.log("responseText: " + data.responseText);
+        console.log("status: " + data.status);
+        console.log("statusText: " + data.statusText);
+        var error = JSON.parse(data.responseText);
         console.log(error);
         $('.error-msg').html("<div class='message'>" + error.message + "</div>");
       },

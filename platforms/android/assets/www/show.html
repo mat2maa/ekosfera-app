@@ -14,9 +14,19 @@
 <body>
 <div data-role="page"><!-- /page -->
 
+  <div data-role="panel" id="menu" data-display="push" data-theme="b">
+    <ul data-role="listview">
+      <li>&nbsp;</li>
+      <li><a href="index.html" data-ajax="false" data-transition="none">News Posts</a></li>
+      <li><a href="upload_photo.html" data-ajax="false" data-transition="none">Upload Photo</a></li>
+      <li><a id="logout" href="#" data-ajax="false" data-transition="none">Logout</a></li>
+    </ul>
+  </div>
+  <!-- /panel -->
+
   <div data-role="header" data-position="fixed">
     <h1>Екосфера</h1>
-    <a href="#" data-icon="carat-l" class="ui-btn-left" id="logout">Log out</a>
+    <a href="#menu" data-icon="bars" class="ui-btn-left">Menu</a>
   </div>
   <!-- /header -->
 

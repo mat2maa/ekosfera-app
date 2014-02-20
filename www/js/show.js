@@ -31,10 +31,18 @@
       var params = location.search.substring(1);
       params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
       var id = params.id;
+      var ua = navigator.userAgent.toLowerCase();
+      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+      var host = '';
+      if(isAndroid) {
+        host = '10.0.2.2';
+      } else {
+        host = 'localhost';
+      }
 
       $.ajax({
         type: "GET",
-        url: "http://localhost:3000/api/news_posts/" + id,
+        url: "http://" + host + ":3000/api/news_posts/" + id,
         cache: false,
         data: {auth_token: auth_token},
         success: function (data) {

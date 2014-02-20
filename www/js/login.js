@@ -49,13 +49,16 @@
         console.log(data);
         console.log(data.token);
         Core.auth.authToken.set(data.token, 30);
-//        window.location = 'index.html';
+        window.location = 'index.html';
       },
 
       onError: function (data) {
         console.log("form/onError");
-        console.log(data.responseText);
-        var error = data.responseText;
+        console.log("readyState: " + data.readyState);
+        console.log("responseText: " + data.responseText);
+        console.log("status: " + data.status);
+        console.log("statusText: " + data.statusText);
+        var error = JSON.parse(data.responseText);
         console.log(error);
         $('.error-msg').html("<div class='message'>" + error.message + "</div>");
       },

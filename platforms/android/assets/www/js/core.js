@@ -22,12 +22,20 @@
           auth_token = Core.auth.authToken.get();
         }
         console.log("auth_token: " + auth_token);
+        var ua = navigator.userAgent.toLowerCase();
+        var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+        var host = '';
+        if(isAndroid) {
+          host = '10.0.2.2';
+        } else {
+          host = 'localhost';
+        }
 
         $.ajax({
 
           type: "POST",
 
-          url: "http://localhost:3000/" + ajax_url,
+          url: "http://" + host + ":3000/" + ajax_url,
 
           cache: false,
 
