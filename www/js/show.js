@@ -29,12 +29,12 @@
       var auth_token = Core.auth.authToken.get();
 
       var params = location.search.substring(1);
-      params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+      params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
       var id = params.id;
       var ua = navigator.userAgent.toLowerCase();
       var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
       var host = '';
-      if(isAndroid) {
+      if (isAndroid) {
         host = '10.0.2.2';
       } else {
         host = 'localhost';
@@ -72,7 +72,31 @@
     },
 
     onSuccess: function (data) {
-      var html = data.article;
+      console.log(data);
+      var authorHtml = "";
+      var html = "";
+      var user = (typeof data.user.parent == "object") ? data.user.parent : data.user;
+      var logoURL = (typeof data.user.parent == "object") ? data.user.parent.user_profile.logo.thumb.url : data.user.user_profile.logo.thumb.url;
+
+      authorHtml += "<div class='user-logo-outer'>";
+      authorHtml += "<img src='http://ekosfera.mk" + logoURL + "' class='user-logo'>";
+      authorHtml += "</div>";
+      authorHtml += "<div class='news-post-author'>";
+      authorHtml += user.user_profile.name;
+      authorHtml += "</div>";
+
+      html = "<div class='news-post-title'>";
+      html += "<h3>" + data.title + "</h3>";
+      html += "</div>";
+      html += "<br />";
+      html += "<div class='news-post-short-description'>";
+      html += data.short_description;
+      html += "</div>";
+      html += "<div class='news-post-article'>";
+      html += data.article;
+      html += "</div>";
+
+      $('.author').append(authorHtml);
       $('.news-post').append(html);
     },
 

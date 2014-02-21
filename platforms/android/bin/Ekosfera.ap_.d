@@ -29,6 +29,12 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/spec.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/upload_photo.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/index.css \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/show.css \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/styles.css \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/upload_photo.css \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/camera.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/gallery.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/header-link-bars.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/logo.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/app.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/core.js \
@@ -39,6 +45,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/upload_photo.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
@@ -66,6 +73,9 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file/www/requestFileSystem.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media/www \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media/www/Media.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media/www/MediaError.js \

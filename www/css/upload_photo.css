@@ -1,0 +1,16 @@
+.photo-button,
+#photo_wrap {
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+}
+
+#photo_wrap {
+  height: auto;
+}

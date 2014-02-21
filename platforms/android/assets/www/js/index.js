@@ -1,10 +1,10 @@
-(function( $ ) {
+(function ($) {
 
   var Core = window.Core || Core || {};
 
   Core.dashboard = {
 
-    init: function (){
+    init: function () {
       Core.auth.requireSession();
       Core.dashboard.bindEvents();
       Core.dashboard.getNewsPosts(
@@ -18,19 +18,19 @@
       Core.ui.showView();
     },
 
-    bindEvents: function() {
-      $('#logout').on('click',function(){
+    bindEvents: function () {
+      $('#logout').on('click', function () {
         Core.auth.logout();
         return false;
       });
     },
 
-    getNewsPosts: function(callback) {
+    getNewsPosts: function (callback) {
       var auth_token = Core.auth.authToken.get();
       var ua = navigator.userAgent.toLowerCase();
       var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
       var host = '';
-      if(isAndroid) {
+      if (isAndroid) {
         host = '10.0.2.2';
       } else {
         host = 'localhost';
@@ -68,8 +68,26 @@
     },
 
     onSuccess: function (data) {
-      $.each( data, function( key, value ) {
-        var html = "<li><a href='show.html?id=" + value.id + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r'>" + value.title + "</a></li>";
+      console.log(data);
+      var html = "";
+      $.each(data, function (key, value) {
+        var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.logo.thumb.url : value.user.user_profile.logo.thumb.url;
+
+        html = "<li>";
+        html += "<a href='show.html?id=" + value.id + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='false' data-transition='none'>";
+        html += "<div class='user-logo-outer'>";
+        html += "<img src='http://ekosfera.mk" + logoURL + "' class='user-logo'>";
+        html += "</div>";
+        html += "<div class='news-post-title truncated'>";
+        html += value.title;
+        html += "</div>";
+        html += "<br />";
+        html += "<div class='news-post-short-description truncated'>";
+        html += value.short_description;
+        html += "</div>";
+        html += "</a>";
+        html += "</li>";
+
         $('.news-posts > .posts-list').append(html);
       });
       $('.news-posts > .posts-list > li:first').addClass("ui-first-child");
@@ -90,7 +108,7 @@
 
   };
 
-  $( Core.dashboard.init );
+  $(Core.dashboard.init);
 
   window.Core = Core;
 

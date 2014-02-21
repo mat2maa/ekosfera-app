@@ -1,0 +1,9 @@
+.news-post {
+  word-break:break-all;
+  clear: both;
+}
+
+.news-post-title,
+.news-post-article {
+  margin-top: 20px;
+}

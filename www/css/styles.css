@@ -1,0 +1,149 @@
+/* Overrides */
+.ui-panel-dismiss {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+  left: 0;
+}
+
+#menu {
+  z-index: 1003; /* One more than panel-dismiss */
+}
+
+/* Main */
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+
+.error-msg {
+}
+
+.error-msg .message {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #f2dede;
+  border: 1px solid #eed3d7;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #b94a48;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.e {
+  color: #00a651;
+  font-weight: bold;
+}
+
+.kosfera {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.header-link {
+  background-color: transparent !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  font-size: 32px !important;
+  padding: 0px !important;
+  padding-left: 20px !important;
+  top: 0;
+  line-height: 36px;
+  font-weight: normal !important;
+}
+
+.header-link-left {
+  left: -3px;
+}
+
+.header-link:after {
+  background-color: transparent;
+  left: -7px !important;
+  top: 20px;
+}
+
+.header-link-bars:after {
+  background-image: url(../img/header-link-bars.png);
+}
+
+.user-logo-outer {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  float: left;
+}
+
+.user-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -moz-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  -o-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.news-post-title {
+  line-height: 18px;
+  margin-left: 0px;
+}
+
+.news-post-short-description {
+  line-height: 18px;
+  margin-left: 0px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.news-post-author {
+  line-height: 18px;
+  margin-left: 50px;
+}
+
+.truncated {
+  display:inline-block;
+  max-width:75%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.news-post-title.truncated,
+.news-post-short-description.truncated {
+  margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
