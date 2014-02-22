@@ -11,6 +11,11 @@
     },
 
     bindEvents: function () {
+      $('#logout').on('click', function () {
+        Core.auth.logout();
+        return false;
+      });
+
       $('#upload_photo').bind('click', function () {
         Core.upload.photo.getURI(pictureSource.PHOTOLIBRARY);
 //        Core.upload.photo.get(pictureSource.SAVEDPHOTOALBUM);
@@ -65,24 +70,20 @@
 
         console.log(imageData);
 
-        var image = $("<img>", {
-          'src': "data:image/jpeg;base64," + imageData,
-          'style': "width:60px;height:60px;"
-        });
-
-        $('#photo_wrap').html(image);
+        var $img = $('<img/>');
+        $img.attr('src', imageData);
+        $img.css({position: 'relative', width: '100%', height: 'auto'});
+        $('#photo_wrap').html($img);
       },
 
       onURISuccess: function (imageURI) {
 
         console.log(imageURI);
 
-        var image = $("<img>", {
-          'src': imageURI,
-          'style': "width:60px;height:60px;"
-        });
-
-        $('#photo_wrap').html(image);
+        var $img = $('<img/>');
+        $img.attr('src', imageURI);
+        $img.css({position: 'relative', width: '100%', height: 'auto'});
+        $('#photo_wrap').html($img);
       },
 
       onFail: function (message) {
@@ -102,26 +103,36 @@
         var options = new FileUploadOptions();
         options.fileKey = "file";
         options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.png';
-        options.mimeType = "text/plain";
+        options.mimeType = "image/png";
 
-        var params = new Object();
+        var params = {};
         params.caption = $('#caption').val();
         params.auth_token = Core.auth.authToken.get();
+
+        console.log(params);
 
         options.params = params;
 
         var ft = new FileTransfer();
+        console.log(ft);
         ft.upload(imageURI, encodeURI("http://" + host + ":3000/api/photos"), Core.upload.photo.onUploadPhotoSuccess, Core.upload.photo.onUploadPhotoFail, options);
       },
 
       onUploadPhotoSuccess: function (data) {
         console.log(data);
+        window.location = 'index_photos.html';
       },
 
       onUploadPhotoFail: function (data) {
-        console.log(data);
+        console.log("upload/onUploadPhotoFail");
+        console.log("readyState: " + data.readyState);
+        console.log("responseText: " + data.responseText);
+        console.log("status: " + data.status);
+        console.log("statusText: " + data.statusText);
+        var error = JSON.parse(data.responseText);
+        console.log(error);
+        $('.error-msg').html("<div class='message'>" + error.message + "</div>");
       }
-
     }
 
   };

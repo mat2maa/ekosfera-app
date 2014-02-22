@@ -2,17 +2,17 @@
 
   var Core = window.Core || Core || {};
 
-  Core.show = {
+  Core.news_posts = {
 
     init: function () {
       Core.auth.requireSession();
-      Core.show.bindEvents();
-      Core.show.getNewsPost(
+      Core.news_posts.bindEvents();
+      Core.news_posts.getNewsPosts(
         {
-          onSuccess: Core.show.onSuccess,
-          onError: Core.show.onError,
-          onDenied: Core.show.onDenied,
-          onComplete: Core.show.onComplete
+          onSuccess: Core.news_posts.onSuccess,
+          onError: Core.news_posts.onError,
+          onDenied: Core.news_posts.onDenied,
+          onComplete: Core.news_posts.onComplete
         }
       );
       Core.ui.showView();
@@ -25,12 +25,8 @@
       });
     },
 
-    getNewsPost: function (callback) {
+    getNewsPosts: function (callback) {
       var auth_token = Core.auth.authToken.get();
-
-      var params = location.search.substring(1);
-      params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
-      var id = params.id;
       var ua = navigator.userAgent.toLowerCase();
       var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
       var host = '';
@@ -42,7 +38,7 @@
 
       $.ajax({
         type: "GET",
-        url: "http://" + host + ":3000/api/news_posts/" + id,
+        url: "http://" + host + ":3000/api/news_posts",
         cache: false,
         data: {auth_token: auth_token},
         success: function (data) {
@@ -73,31 +69,29 @@
 
     onSuccess: function (data) {
       console.log(data);
-      var authorHtml = "";
       var html = "";
-      var user = (typeof data.user.parent == "object") ? data.user.parent : data.user;
-      var logoURL = (typeof data.user.parent == "object") ? data.user.parent.user_profile.logo.thumb.url : data.user.user_profile.logo.thumb.url;
+      $.each(data, function (key, value) {
+        var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.logo.thumb.url : value.user.user_profile.logo.thumb.url;
 
-      authorHtml += "<div class='user-logo-outer'>";
-      authorHtml += "<img src='http://ekosfera.mk" + logoURL + "' class='user-logo'>";
-      authorHtml += "</div>";
-      authorHtml += "<div class='news-post-author'>";
-      authorHtml += user.user_profile.name;
-      authorHtml += "</div>";
+        html = "<li>";
+        html += "<a href='show_news_posts.html?id=" + value.id + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='false' data-transition='none'>";
+        html += "<div class='user-logo-outer'>";
+        html += "<img src='http://ekosfera.mk" + logoURL + "' class='user-logo'>";
+        html += "</div>";
+        html += "<div class='news-post-title truncated'>";
+        html += value.title;
+        html += "</div>";
+        html += "<br />";
+        html += "<div class='news-post-short-description truncated'>";
+        html += value.short_description;
+        html += "</div>";
+        html += "</a>";
+        html += "</li>";
 
-      html = "<div class='news-post-title'>";
-      html += "<h3>" + data.title + "</h3>";
-      html += "</div>";
-      html += "<br />";
-      html += "<div class='news-post-short-description'>";
-      html += data.short_description;
-      html += "</div>";
-      html += "<div class='news-post-article'>";
-      html += data.article;
-      html += "</div>";
-
-      $('.author').append(authorHtml);
-      $('.news-post').append(html);
+        $('.news-posts > .posts-list').append(html);
+      });
+      $('.news-posts > .posts-list > li:first').addClass("ui-first-child");
+      $('.news-posts > .posts-list > li:last').addClass("ui-last-child");
     },
 
     onError: function (data) {
@@ -111,9 +105,10 @@
     onComplete: function (data) {
       console.log(data);
     }
+
   };
 
-  $(Core.show.init);
+  $(Core.news_posts.init);
 
   window.Core = Core;
 

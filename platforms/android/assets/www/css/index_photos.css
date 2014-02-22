@@ -1,0 +1,16 @@
+.photo-link {
+  display: block;
+  margin: 2.5%;
+  width: 45%;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  float: left;
+}
+
+.photo {
+  width:100%;
+}

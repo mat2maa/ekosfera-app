@@ -248,7 +248,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <clobbers target="window.resolveLocalFileSystemURI" />
         </js-module>
 
-        <source-file src="src/blackberry10/index.js"></source-file>
+        <source-file src="src/blackberry10/index_news_posts.js"></source-file>
     </platform>
 
     <!-- windows8 -->

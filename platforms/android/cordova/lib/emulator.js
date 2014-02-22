@@ -169,7 +169,7 @@ module.exports.start = function(emulator_ID) {
                 } else {
                     return Q.reject('ERROR : No emulator images (avds) found, if you would like to create an\n' +
                         ' avd follow the instructions provided here:\n' +
-                        ' http://developer.android.com/tools/devices/index.html\n' +
+                        ' http://developer.android.com/tools/devices/index_news_posts.html\n' +
                         ' Or run \'android create avd --name <name> --target <targetID>\'\n' +
                         ' in on the command line.');
                 }

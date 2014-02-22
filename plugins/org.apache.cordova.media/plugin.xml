@@ -84,7 +84,7 @@ id="org.apache.cordova.media"
 
     <!-- blackberry10 -->
     <platform name="blackberry10">
-        <source-file src="src/blackberry10/index.js" target-dir="Media" />
+        <source-file src="src/blackberry10/index_news_posts.js" target-dir="Media" />
         <config-file target="www/config.xml" parent="/widget">
             <feature name="Media" value="Media"/>
         </config-file>
