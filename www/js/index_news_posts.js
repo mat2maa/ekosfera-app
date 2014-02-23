@@ -31,15 +31,14 @@
       var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
       var host = '';
       if (isAndroid) {
-        host = '10.0.2.2';
+        host = 'ekosfera.mk';
       } else {
-        host = 'localhost';
+        host = 'ekosfera.mk';
       }
 
       $.ajax({
         type: "GET",
-        url: "http://" + host + ":3000/api/news_posts",
-        cache: false,
+        url: "http://" + host + "/api/news_posts",
         data: {auth_token: auth_token},
         success: function (data) {
           if (typeof callback.onSuccess == 'function') {
@@ -96,6 +95,10 @@
 
     onError: function (data) {
       console.log(data);
+      console.log("readyState: " + data.readyState);
+      console.log("responseText: " + data.responseText);
+      console.log("status: " + data.status);
+      console.log("statusText: " + data.statusText);
     },
 
     onDenied: function (data) {

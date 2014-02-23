@@ -26,18 +26,16 @@
         var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
         var host = '';
         if(isAndroid) {
-          host = '10.0.2.2';
+          host = 'ekosfera.mk';
         } else {
-          host = 'localhost';
+          host = 'ekosfera.mk';
         }
 
         $.ajax({
 
           type: "POST",
 
-          url: "http://" + host + ":3000/" + ajax_url,
-
-          cache: false,
+          url: "http://" + host + "/" + ajax_url,
 
           //data: ajax_data,
           data: {email: email, password: password, auth_token: auth_token},

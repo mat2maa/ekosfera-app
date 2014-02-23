@@ -15,7 +15,45 @@
         Core.auth.logout();
         return false;
       });
-    },
+      $('#ajax-test').on("click", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "GET",
+          url: "http://ekosfera.mk/api/news_posts",
+          data: {auth_token: "FnRhQqGo3ZVdkgGSLzfF"},
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+            console.log("readyState: " + data.readyState);
+            console.log("responseText: " + data.responseText);
+            console.log("status: " + data.status);
+            console.log("statusText: " + data.statusText);
+          },
+          error: function (data) {
+            console.log(data);
+            console.log("readyState: " + data.readyState);
+            console.log("responseText: " + data.responseText);
+            console.log("status: " + data.status);
+            console.log("statusText: " + data.statusText);
+          },
+          complete: function (data) {
+            console.log(data);
+            console.log("readyState: " + data.readyState);
+            console.log("responseText: " + data.responseText);
+            console.log("status: " + data.status);
+            console.log("statusText: " + data.statusText);
+          },
+          denied: function (data) {
+            console.log(data);
+            console.log("readyState: " + data.readyState);
+            console.log("responseText: " + data.responseText);
+            console.log("status: " + data.status);
+            console.log("statusText: " + data.statusText);
+          }
+        });
+      });
+    }
 
   };
 

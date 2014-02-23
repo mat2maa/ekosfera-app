@@ -11,6 +11,7 @@ var app = {
   bindEvents: function() {
     console.log("app/bindEvents");
     document.addEventListener('deviceready', this.onDeviceReady, false);
+    $.mobile.allowCrossDomainPages = true;
   },
   // deviceready Event Handler
   //

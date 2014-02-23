@@ -27,6 +27,9 @@
       <li><a href="upload_photo.html" data-ajax="false" data-transition="none">Upload Photo</a></li>
       <li><a id="logout" href="#" data-ajax="false" data-transition="none">Logout</a></li>
     </ul>
+
+    <br/><br/><br/>
+    <a href="#" id="ajax-test">AJAX Test</a>
   </div>
   <!-- /content -->
 
@@ -43,6 +46,25 @@
   app.initialize();
 </script>
 <script type="text/javascript" src="js/core.js"></script>
+<script>
+  $(document).bind("mobileinit", function() {
+    // Make your jQuery Mobile framework configuration changes here!
+    $.mobile.allowCrossDomainPages = true;
+    $.mobile.ajaxEnabled = true;
+    $.mobile.pushStateEnabled = false;
+    $.mobile.allowCrossDomainPages = true;
+    $.support.cors = true;
+  });
+
+  $(document).ready(function() {
+    // Make your jQuery Mobile framework configuration changes here!
+    $.mobile.allowCrossDomainPages = true;
+    $.mobile.ajaxEnabled = true;
+    $.mobile.pushStateEnabled = false;
+    $.mobile.allowCrossDomainPages = true;
+    $.support.cors = true;
+  });
+</script>
 <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

@@ -95,9 +95,9 @@
         var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
         var host = '';
         if (isAndroid) {
-          host = '10.0.2.2';
+          host = 'ekosfera.mk';
         } else {
-          host = 'localhost';
+          host = 'ekosfera.mk';
         }
 
         var options = new FileUploadOptions();
@@ -115,7 +115,7 @@
 
         var ft = new FileTransfer();
         console.log(ft);
-        ft.upload(imageURI, encodeURI("http://" + host + ":3000/api/photos"), Core.upload.photo.onUploadPhotoSuccess, Core.upload.photo.onUploadPhotoFail, options);
+        ft.upload(imageURI, encodeURI("http://" + host + "/api/photos"), Core.upload.photo.onUploadPhotoSuccess, Core.upload.photo.onUploadPhotoFail, options);
       },
 
       onUploadPhotoSuccess: function (data) {

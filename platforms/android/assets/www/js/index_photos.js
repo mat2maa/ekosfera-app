@@ -31,15 +31,14 @@
       var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
       var host = '';
       if (isAndroid) {
-        host = '10.0.2.2';
+        host = 'ekosfera.mk';
       } else {
-        host = 'localhost';
+        host = 'ekosfera.mk';
       }
 
       $.ajax({
         type: "GET",
-        url: "http://" + host + ":3000/api/photos",
-        cache: false,
+        url: "http://" + host + "/api/photos",
         data: {auth_token: auth_token},
         success: function (data) {
           if (typeof callback.onSuccess == 'function') {
@@ -75,14 +74,14 @@
         var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
         var host = '';
         if (isAndroid) {
-          host = '10.0.2.2';
+          host = 'ekosfera.mk';
         } else {
-          host = 'localhost';
+          host = 'ekosfera.mk';
         }
 
         html = "<li>";
-        html += "<a href='http://" + host + ":3000" + value.image.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-link'>";
-        html += "<img src='http://" + host + ":3000" + value.image.url + "' title='" + value.caption + "' alt='" + value.caption + "' class='photo'>";
+        html += "<a href='http://" + host + "" + value.image.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-link'>";
+        html += "<img src='http://" + host + "" + value.image.url + "' title='" + value.caption + "' alt='" + value.caption + "' class='photo'>";
         html += "</a>";
         html += "</li>";
 
