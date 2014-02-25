@@ -91,14 +91,6 @@
       },
 
       uploadPhoto: function (form, imageURI) {
-        var ua = navigator.userAgent.toLowerCase();
-        var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-        var host = '';
-        if (isAndroid) {
-          host = 'ekosfera.mk';
-        } else {
-          host = 'ekosfera.mk';
-        }
 
         var options = new FileUploadOptions();
         options.fileKey = "file";

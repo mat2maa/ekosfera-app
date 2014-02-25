@@ -31,14 +31,6 @@
       var params = location.search.substring(1);
       params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
       var id = params.id;
-      var ua = navigator.userAgent.toLowerCase();
-      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-      var host = '';
-      if (isAndroid) {
-        host = 'ekosfera.mk';
-      } else {
-        host = 'ekosfera.mk';
-      }
 
       $.ajax({
         type: "GET",
@@ -78,7 +70,7 @@
       var logoURL = (typeof data.user.parent == "object") ? data.user.parent.user_profile.logo.thumb.url : data.user.user_profile.logo.thumb.url;
 
       authorHtml += "<div class='user-logo-outer'>";
-      authorHtml += "<img src='http://ekosfera.mk" + logoURL + "' class='user-logo'>";
+      authorHtml += "<img src='http://" + host + "" + logoURL + "' class='user-logo'>";
       authorHtml += "</div>";
       authorHtml += "<div class='news-post-author'>";
       authorHtml += user.user_profile.name;

@@ -106,6 +106,27 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
+        "id": "nl.x-services.plugins.calendar.Calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/com.borismus.webintent/www/webintent.js",
+        "id": "com.borismus.webintent.WebIntent",
+        "clobbers": [
+            "WebIntent"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -242,6 +263,9 @@ module.exports.metadata =
     "org.apache.cordova.media-capture": "0.2.7",
     "org.apache.cordova.media": "0.2.8",
     "org.apache.cordova.file-transfer": "0.4.1",
+    "org.apache.cordova.device": "0.2.8",
+    "nl.x-services.plugins.calendar": "4.0",
+    "com.borismus.webintent": "1.0.0",
     "org.apache.cordova.file": "1.0.0"
 }
 // BOTTOM OF METADATA

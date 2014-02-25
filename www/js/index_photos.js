@@ -27,14 +27,6 @@
 
     getPhotos: function (callback) {
       var auth_token = Core.auth.authToken.get();
-      var ua = navigator.userAgent.toLowerCase();
-      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-      var host = '';
-      if (isAndroid) {
-        host = 'ekosfera.mk';
-      } else {
-        host = 'ekosfera.mk';
-      }
 
       $.ajax({
         type: "GET",
@@ -70,15 +62,6 @@
       console.log(data);
       var html = "";
       $.each(data, function (key, value) {
-        var ua = navigator.userAgent.toLowerCase();
-        var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-        var host = '';
-        if (isAndroid) {
-          host = 'ekosfera.mk';
-        } else {
-          host = 'ekosfera.mk';
-        }
-
         html = "<li>";
         html += "<a href='http://" + host + "" + value.image.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-link'>";
         html += "<img src='http://" + host + "" + value.image.url + "' title='" + value.caption + "' alt='" + value.caption + "' class='photo'>";

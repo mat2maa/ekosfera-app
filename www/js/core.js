@@ -22,14 +22,6 @@
           auth_token = Core.auth.authToken.get();
         }
         console.log("auth_token: " + auth_token);
-        var ua = navigator.userAgent.toLowerCase();
-        var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-        var host = '';
-        if(isAndroid) {
-          host = 'ekosfera.mk';
-        } else {
-          host = 'ekosfera.mk';
-        }
 
         $.ajax({
 
@@ -85,7 +77,7 @@
 
 })(jQuery);
 
-(function( $ ) {
+(function ($) {
 
   var Core = window.Core || Core || {};
 
@@ -94,7 +86,7 @@
 
     authToken: {
 
-      set: function( token, lifetime ) {
+      set: function (token, lifetime) {
         var expires = new Date();
         expires.setDate(expires.getDate() + lifetime);
 
@@ -102,50 +94,50 @@
         localStorage.setItem("auth_token_expiration", expires.toGMTString());
       },
 
-      get: function() {
+      get: function () {
         return localStorage.getItem("auth_token");
       },
 
-      expiration: function() {
+      expiration: function () {
         return localStorage.getItem("auth_token_expiration");
       },
 
-      destroy: function() {
+      destroy: function () {
         localStorage.removeItem("auth_token_expiration");
         localStorage.removeItem("auth_token");
       }
 
     },
 
-    isAuthenticated: function() {
-      if( Core.auth.authToken.get() !== null ){
+    isAuthenticated: function () {
+      if (Core.auth.authToken.get() !== null) {
         return true;
       } else {
         return false;
       }
     },
 
-    isNotAuthenticated: function() {
-      if( Core.auth.authToken.get() !== null ){
+    isNotAuthenticated: function () {
+      if (Core.auth.authToken.get() !== null) {
         return false;
       } else {
         return true;
       }
     },
 
-    requireSession: function() {
-      if( !Core.auth.isAuthenticated() ) {
+    requireSession: function () {
+      if (!Core.auth.isAuthenticated()) {
         window.location = 'login.html';
       }
     },
 
-    requireNoSession: function() {
-      if( Core.auth.isAuthenticated() ) {
+    requireNoSession: function () {
+      if (Core.auth.isAuthenticated()) {
         window.location = 'index.html';
       }
     },
 
-    logout: function() {
+    logout: function () {
       Core.auth.authToken.destroy();
       window.location = 'login.html';
     }
@@ -156,17 +148,17 @@
 
 })(jQuery);
 
-(function( $ ) {
+(function ($) {
 
   var Core = window.Core || Core || {};
 
   Core.ui = {
 
-    showView: function (){
+    showView: function () {
       $("#content").show();
     },
 
-    hideView: function (){
+    hideView: function () {
       $("#content").hide();
     }
 

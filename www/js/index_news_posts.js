@@ -27,14 +27,6 @@
 
     getNewsPosts: function (callback) {
       var auth_token = Core.auth.authToken.get();
-      var ua = navigator.userAgent.toLowerCase();
-      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-      var host = '';
-      if (isAndroid) {
-        host = 'ekosfera.mk';
-      } else {
-        host = 'ekosfera.mk';
-      }
 
       $.ajax({
         type: "GET",
@@ -75,7 +67,7 @@
         html = "<li>";
         html += "<a href='show_news_posts.html?id=" + value.id + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='false' data-transition='none'>";
         html += "<div class='user-logo-outer'>";
-        html += "<img src='http://ekosfera.mk" + logoURL + "' class='user-logo'>";
+        html += "<img src='http://" + host + "" + logoURL + "' class='user-logo'>";
         html += "</div>";
         html += "<div class='news-post-title truncated'>";
         html += value.title;

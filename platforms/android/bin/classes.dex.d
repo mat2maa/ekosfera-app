@@ -1,4 +1,5 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes.dex : \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/borismus/webintent/WebIntent.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/BuildConfig.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/Ekosfera.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$attr.class \
@@ -6,9 +7,17 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$string.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$xml.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$Attendee.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$Event.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$KeyIndex.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/CalendarProviderAccessor.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/LegacyCalendarAccessor.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/Calendar.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/camera/CameraLauncher.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/camera/ExifHelper.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/camera/FileHelper.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/device/Device.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/file/ContentFilesystem.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/file/DirectoryManager.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/file/EncodingException.class \
