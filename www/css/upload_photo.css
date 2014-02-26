@@ -9,8 +9,10 @@
   box-sizing: border-box;
   padding: 20px;
   text-align: center;
+  border: 5px solid;
 }
 
 #photo_wrap {
   height: auto;
+  border-color: #aaaaaa;
 }

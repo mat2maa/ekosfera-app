@@ -1,12 +1,12 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes.dex : \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/BuildConfig.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/Ekosfera.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/R$attr.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/R$drawable.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/R$string.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/R$xml.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/ager/ekosfera/R.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/borismus/webintent/WebIntent.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/BuildConfig.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/Ekosfera.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$attr.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$drawable.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$string.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R$xml.class \
-/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/com/example/ekosfera/R.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$Attendee.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$Event.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$KeyIndex.class \
@@ -83,4 +83,5 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/mediacapture/Capture$3.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/mediacapture/Capture.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/mediacapture/FileHelper.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/splashscreen/SplashScreen.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/dexedLibs/classes-e344ad3052d4a3368d942d71a208540a.jar \

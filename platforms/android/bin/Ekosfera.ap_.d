@@ -1,9 +1,14 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/Ekosfera.ap_ \
  : /Users/matthewager/Sites/ekosfera/platforms/android/res/drawable/icon.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/res/drawable/splash.9.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-hdpi/icon.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-hdpi/splash.9.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-ldpi/icon.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-ldpi/splash.9.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-mdpi/icon.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-mdpi/splash.9.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-xhdpi/icon.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/res/drawable-xhdpi/splash.9.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/res/values/strings.xml \
 /Users/matthewager/Sites/ekosfera/platforms/android/res/xml/config.xml \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/res/drawable/icon.png \
@@ -32,6 +37,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/show_news_posts.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/spec \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/spec.html \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/splash.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/sync_calendar.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/upload_photo.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/icons.png \
@@ -76,6 +82,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/com.borismus.webintent/www \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/com.borismus.webintent/www/webintent.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/www \
@@ -121,6 +128,8 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture/www/CaptureVideoOptions.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture/www/MediaFile.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture/www/MediaFileData.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res/icon \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res/screen \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res/icon/android \

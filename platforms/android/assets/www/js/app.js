@@ -36,6 +36,9 @@ var app = {
       'Device UUID: ' + device.uuid + '<br />' +
       'Device Version: ' + device.version + '<br />';
     console.log(properties);
+    console.log("ATTEMPTING TO REMOVE SPLASH SCREEN")
+    navigator.splashscreen.hide();
+    console.log("REMOVED SPLASH SCREEN")
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
