@@ -29,10 +29,9 @@ public class Ekosfera extends CordovaActivity
     {
         super.onCreate(savedInstanceState);
         super.setIntegerProperty("splashscreen", R.drawable.splash);
-        super.loadUrl(Config.getStartUrl(), 3000);
         super.init();
         // Set by <content src="index.html" /> in config.xml
-        super.loadUrl(Config.getStartUrl());
+        super.loadUrl(Config.getStartUrl(), 10000);
         //super.loadUrl("file:///android_asset/www/index.html")
     }
 }

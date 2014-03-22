@@ -20,6 +20,7 @@ var app = {
   // 'load', 'deviceready', 'offline', and 'online'.
   bindEvents: function() {
     console.log("app/bindEvents");
+
     document.addEventListener('deviceready', this.onDeviceReady, false);
     $.mobile.allowCrossDomainPages = true;
   },
@@ -29,16 +30,9 @@ var app = {
   // function, we must explicity call 'app.receivedEvent(...);'
   onDeviceReady: function() {
     console.log("app/onDeviceReady");
+
     app.receivedEvent('deviceready');
-    var properties = 'Device Model: ' + device.model + '<br />' +
-      'Device Cordova: ' + device.cordova + '<br />' +
-      'Device Platform: ' + device.platform + '<br />' +
-      'Device UUID: ' + device.uuid + '<br />' +
-      'Device Version: ' + device.version + '<br />';
-    console.log(properties);
-    console.log("ATTEMPTING TO REMOVE SPLASH SCREEN")
     navigator.splashscreen.hide();
-    console.log("REMOVED SPLASH SCREEN")
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {

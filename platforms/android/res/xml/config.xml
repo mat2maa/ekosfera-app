@@ -62,7 +62,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreen" value="splash" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenDelay" value="10000" />
     <icon src="icon.png" />
     <splash src="splash.png" />
     <access origin="http://127.0.0.1*" />
