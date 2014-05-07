@@ -11,6 +11,10 @@
   z-index: 1003; /* One more than panel-dismiss */
 }
 
+.settings-button-without-text {
+  padding: 15px;
+}
+
 /* Main */
 
 body {
@@ -137,19 +141,28 @@ body {
   transform: translate3d(-50%, -50%, 0);
 }
 
-.news-post-title {
+.news-post-title,
+.campaign-title,
+.petition-title,
+.survey-title {
   line-height: 18px;
   margin-left: 0px;
 }
 
-.news-post-short-description {
+.news-post-short-description,
+.campaign-date,
+.petition-date,
+.survey-date {
   line-height: 18px;
   margin-left: 0px;
   font-size: 12px;
   font-weight: normal;
 }
 
-.news-post-author {
+.news-post-author,
+.campaign-author,
+.petition-author,
+.survey-author {
   line-height: 18px;
   margin-left: 50px;
 }
@@ -163,19 +176,74 @@ body {
 }
 
 .news-post-title.truncated,
-.news-post-short-description.truncated {
+.news-post-short-description.truncated,
+.campaign-title.truncated,
+.campaign-date.truncated,
+.petition-title.truncated,
+.petition-date.truncated,
+.survey-title.truncated,
+.survey-date.truncated {
   margin-left: 10px;
 }
 
 .list-header {
   padding: 1.2em 1em 0.2em 1em !important;
   border-bottom-width: 2px !important;
+  border-top-width: 0 !important;
   text-transform: uppercase;
   font-weight: bold;
   color: #666 !important;
 }
 
+#menu a {
+  margin: 5px 0 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background-color: white !important;
+  text-shadow: none !important;
+}
 
+#menu a:hover {
+  background-color: #eeeeee !important;
+}
+
+#menu a.ui-btn.ui-btn-active {
+  background-color: #eeeeee !important;
+  color: #333 !important;
+}
+
+#menu .news-post-link {
+  border-left: 5px solid #285b8f !important;
+}
+
+#menu .campaign-link {
+  border-left: 5px solid #e5c700 !important;
+}
+
+#menu .petition-link {
+  border-left: 5px solid #bfa600 !important;
+}
+
+#menu .survey-link {
+  border-left: 5px solid #7f6e00 !important;
+}
+
+#menu .photo-link {
+  border-left: 5px solid #9c6b5a !important;
+}
+
+#menu .upload-photo-link {
+  border-left: 5px solid #285b8f !important;
+}
+
+#menu .sync-calendar-link {
+  border-left: 5px solid #9c6b5a !important;
+}
+
+#menu .logout-link {
+  border-left: 5px solid #000000 !important;
+}
 
 
 

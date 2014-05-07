@@ -261,6 +261,20 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "file": "plugins/me.apla.cordova.app-preferences/www/apppreferences.js",
+        "id": "me.apla.cordova.app-preferences.apppreferences",
+        "clobbers": [
+            "plugins.appPreferences"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -274,7 +288,9 @@ module.exports.metadata =
     "org.apache.cordova.file-transfer": "0.4.1",
     "org.apache.cordova.media": "0.2.8",
     "org.apache.cordova.media-capture": "0.2.7",
-    "org.apache.cordova.splashscreen": "0.2.7"
+    "org.apache.cordova.splashscreen": "0.2.7",
+    "me.apla.cordova.app-preferences": "0.4.0",
+    "org.apache.cordova.inappbrowser": "0.4.1-dev"
 }
 // BOTTOM OF METADATA
 });

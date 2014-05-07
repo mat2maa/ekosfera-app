@@ -7,3 +7,7 @@
 .news-post-article {
   margin-top: 20px;
 }
+
+.news-post img {
+  max-width: 100%;
+}

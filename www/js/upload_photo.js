@@ -45,7 +45,8 @@
         navigator.camera.getPicture(Core.upload.photo.onSuccess, Core.upload.photo.onFail, {
             quality: 50,
             destinationType: destinationType.FILE_URI,
-            sourceType: source
+            sourceType: source,
+            correctOrientation: true
           }
         );
       },
@@ -54,14 +55,16 @@
         navigator.camera.getPicture(Core.upload.photo.onURISuccess, Core.upload.photo.onFail, {
             quality: 50,
             destinationType: destinationType.FILE_URI,
-            sourceType: source
+            sourceType: source,
+            correctOrientation: true
           }
         );
       },
 
       capture: function capturePhoto() {
         navigator.camera.getPicture(Core.upload.photo.onDataSuccess, Core.upload.photo.onFail, {
-            quality: 50
+            quality: 50,
+            correctOrientation: true
           }
         );
       },
@@ -91,6 +94,7 @@
       },
 
       uploadPhoto: function (form, imageURI) {
+        $.mobile.loading("show");
 
         var options = new FileUploadOptions();
         options.fileKey = "file";
@@ -111,11 +115,13 @@
       },
 
       onUploadPhotoSuccess: function (data) {
+        $.mobile.loading("hide");
         console.log(data);
         window.location = 'index_photos.html';
       },
 
       onUploadPhotoFail: function (data) {
+        $.mobile.loading("hide");
         console.log("upload/onUploadPhotoFail");
         console.log("readyState: " + data.readyState);
         console.log("responseText: " + data.responseText);

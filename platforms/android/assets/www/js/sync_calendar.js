@@ -24,7 +24,9 @@
         return false;
       });
 
-      $(document).on('click', '.sync-btn', function () {
+      $(document).on('click', '.sync-btn', function (e) {
+
+        e.preventDefault();
 
         console.log('Sharing:AddEvent(Android)');
 
@@ -48,7 +50,10 @@
         window.plugins.calendar.createEvent($(this).attr('data-title'), $(this).attr('data-location'), $(this).attr('data-notes'), startDate, endDate, success, error);
       });
 
-      $(document).on('click', '.sync-all', function () {
+      $(document).on('click', '.sync-all', function (e) {
+
+        e.preventDefault();
+
         $('.sync-btn').each(function () {
           var startDate = new Date($(this).attr('data-year'), $(this).attr('data-month'), $(this).attr('data-day'), 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
           var endDate = new Date($(this).attr('data-year'), $(this).attr('data-month'), parseInt($(this).attr('data-day')) + 1, 0, 0, 0, 0, 0);
@@ -114,25 +119,18 @@
         var notes = value.short_description;
 
         html = "<li>";
-        html += "<div class='calendar-event'>";
-        html += "<div class='calendar-event-title truncated'>";
+        html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
+        html += "<div class='calendar-event truncated'>";
         html += value.title;
-        html += "</div>";
         html += "<br />";
-        html += "<div class='calendar-event-short-description truncated'>";
         html += value.short_description;
         html += "</div>";
-        html += "</div>";
-        html += "<div class='ui-btn ui-input-btn ui-shadow ui-btn-right'>";
-        html += "<input type='button' class='sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>Sync</input>";
-        html += "</div>";
+        html += "</a>";
         html += "</li>";
 
         $('.calendar-events > .events-list').append(html);
       });
-      html = "<div class='ui-btn ui-input-btn ui-shadow'>";
-      html += "<input type='button' class='sync-all' data-corners='true' data-enhanced='true' value='Sync All'>Sync All</input>";
-      html += "</div>";
+      html = "<a href='#" + data.id + ".html' class='sync-all ui-btn ui-icon-recycle ui-btn-icon-right'>Sync All</a>";
       $('.calendar-events > .events-list').prepend(html);
       $('.calendar-events > .events-list > li:first').addClass("ui-first-child");
       $('.calendar-events > .events-list > li:last').addClass("ui-last-child");

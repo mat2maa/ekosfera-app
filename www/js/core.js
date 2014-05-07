@@ -21,7 +21,7 @@
         if (Core.auth.isAuthenticated()) {
           auth_token = Core.auth.authToken.get();
         }
-        console.log("auth_token: " + auth_token);
+        console.log("ekosfera_auth_token: " + auth_token);
 
         $.ajax({
 
@@ -90,21 +90,21 @@
         var expires = new Date();
         expires.setDate(expires.getDate() + lifetime);
 
-        localStorage.setItem("auth_token", token);
-        localStorage.setItem("auth_token_expiration", expires.toGMTString());
+        localStorage.setItem("ekosfera_auth_token", token);
+        localStorage.setItem("ekosfera_auth_token_expiration", expires.toGMTString());
       },
 
       get: function () {
-        return localStorage.getItem("auth_token");
+        return localStorage.getItem("ekosfera_auth_token");
       },
 
       expiration: function () {
-        return localStorage.getItem("auth_token_expiration");
+        return localStorage.getItem("ekosfera_auth_token_expiration");
       },
 
       destroy: function () {
-        localStorage.removeItem("auth_token_expiration");
-        localStorage.removeItem("auth_token");
+        localStorage.removeItem("ekosfera_auth_token_expiration");
+        localStorage.removeItem("ekosfera_auth_token");
       }
 
     },

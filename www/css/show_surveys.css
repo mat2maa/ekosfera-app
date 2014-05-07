@@ -1,0 +1,13 @@
+.survey {
+  word-break:break-all;
+  clear: both;
+}
+
+.survey-title,
+.survey-article {
+  margin-top: 20px;
+}
+
+.survey img {
+  max-width: 100%;
+}

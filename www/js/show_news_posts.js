@@ -5,6 +5,10 @@
   Core.show_news_posts = {
 
     init: function () {
+      $(".selector").loader({
+        defaults: true
+      });
+
       Core.auth.requireSession();
       Core.show_news_posts.bindEvents();
       Core.show_news_posts.getNewsPost(
@@ -26,51 +30,60 @@
     },
 
     getNewsPost: function (callback) {
+      $.mobile.loading("show");
+
       var auth_token = Core.auth.authToken.get();
 
       var params = location.search.substring(1);
       params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
       var id = params.id;
 
-      $.ajax({
-        type: "GET",
-        url: "http://" + host + "/api/news_posts/" + id,
-        data: {auth_token: auth_token},
-        success: function (data) {
-          if (typeof callback.onSuccess == 'function') {
-            callback.onSuccess.call(this, data);
-          }
-        },
-        error: function (data, status) {
-          if (typeof callback.onError == 'function') {
-            if (data.status == '403') {
-              return callback.onDenied.call(this, data);
+      if (localStorage.getItem("ekosfera_news_post_" + id) === null) {
+        $.ajax({
+          type: "GET",
+          url: "http://" + host + "/api/news_posts/" + id,
+          data: {auth_token: auth_token},
+          success: function (data) {
+            if (typeof callback.onSuccess == 'function') {
+              callback.onSuccess.call(this, data);
             }
-            callback.onError.call(this, data);
+          },
+          error: function (data, status) {
+            if (typeof callback.onError == 'function') {
+              if (data.status == '403') {
+                return callback.onDenied.call(this, data);
+              }
+              callback.onError.call(this, data);
+            }
+          },
+          complete: function (data) {
+            if (typeof callback.onComplete == 'function') {
+              callback.onComplete.call(this, data);
+            }
+          },
+          denied: function (data) {
+            if (typeof callback.onDenied == 'function') {
+              callback.onDenied.call(this, data);
+            }
           }
-        },
-        complete: function (data) {
-          if (typeof callback.onComplete == 'function') {
-            callback.onComplete.call(this, data);
-          }
-        },
-        denied: function (data) {
-          if (typeof callback.onDenied == 'function') {
-            callback.onDenied.call(this, data);
-          }
-        }
-      });
+        });
+      } else {
+        $.mobile.loading("hide");
+        Core.show_news_posts.populateFromStorage(id);
+      }
     },
 
     onSuccess: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
+      localStorage.setItem('ekosfera_news_post_' + data.id, JSON.stringify(data));
       var authorHtml = "";
       var html = "";
       var user = (typeof data.user.parent == "object") ? data.user.parent : data.user;
-      var logoURL = (typeof data.user.parent == "object") ? data.user.parent.user_profile.logo.thumb.url : data.user.user_profile.logo.thumb.url;
+      var logoURL = (typeof data.user.parent == "object") ? data.user.parent.user_profile.base64uri : data.user.user_profile.base64uri;
 
       authorHtml += "<div class='user-logo-outer'>";
-      authorHtml += "<img src='http://" + host + "" + logoURL + "' class='user-logo'>";
+      authorHtml += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
       authorHtml += "</div>";
       authorHtml += "<div class='news-post-author'>";
       authorHtml += user.user_profile.name;
@@ -101,7 +114,38 @@
 
     onComplete: function (data) {
       console.log(data);
+    },
+
+    populateFromStorage: function (id) {
+      $.mobile.loading("hide");
+      var data = JSON.parse(localStorage.getItem("ekosfera_news_post_" + id));
+      var authorHtml = "";
+      var html = "";
+      var user = (typeof data.user.parent == "object") ? data.user.parent : data.user;
+      var logoURL = (typeof data.user.parent == "object") ? data.user.parent.user_profile.base64uri : data.user.user_profile.base64uri;
+
+      authorHtml += "<div class='user-logo-outer'>";
+      authorHtml += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+      authorHtml += "</div>";
+      authorHtml += "<div class='news-post-author'>";
+      authorHtml += user.user_profile.name;
+      authorHtml += "</div>";
+
+      html = "<div class='news-post-title'>";
+      html += "<h3>" + data.title + "</h3>";
+      html += "</div>";
+      html += "<br />";
+      html += "<div class='news-post-short-description'>";
+      html += data.short_description;
+      html += "</div>";
+      html += "<div class='news-post-article'>";
+      html += data.article;
+      html += "</div>";
+
+      $('.author').append(authorHtml);
+      $('.news-post').append(html);
     }
+
   };
 
   $(Core.show_news_posts.init);
