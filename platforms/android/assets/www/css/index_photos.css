@@ -4,11 +4,12 @@
   width: 45%;
   height: auto;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 3px;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 6px;
   text-align: center;
   float: left;
+  border: #ddd 1px solid;
 }
 
 #index-photos .photo {
