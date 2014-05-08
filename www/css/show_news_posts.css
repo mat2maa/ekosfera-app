@@ -1,13 +1,13 @@
-.news-post {
+#show-news-post .news-post {
   word-break:break-all;
   clear: both;
 }
 
-.news-post-title,
-.news-post-article {
+#show-news-post .news-post-title,
+#show-news-post .news-post-article {
   margin-top: 20px;
 }
 
-.news-post img {
+#show-news-post .news-post img {
   max-width: 100%;
 }

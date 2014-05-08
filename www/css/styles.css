@@ -15,6 +15,15 @@
   padding: 15px;
 }
 
+[data-role="page"] {
+  padding-top: 43px;
+  padding-bottom: 43px;
+}
+
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
+  /*min-height: 100% !important;*/
+}
+
 /* Main */
 
 body {
@@ -114,12 +123,21 @@ body {
 
 .header-link:after {
   background-color: transparent;
-  left: -7px !important;
-  top: 20px;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .header-link-bars:after {
+  top: 20px !important;
+  left: -7px !important;
   background-image: url(../img/header-link-bars.png);
+}
+
+.header-link-back:after {
+  top: 20px !important;
+  left: 0px !important;
+  background-image: url(../img/header-link-back.png);
 }
 
 .user-logo-outer {
@@ -245,7 +263,9 @@ body {
   border-left: 5px solid #000000 !important;
 }
 
-
+#logout.ui-btn-right {
+  right: 40px;
+}
 
 
 

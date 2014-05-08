@@ -33,12 +33,64 @@ var app = {
 
     app.receivedEvent('deviceready');
     navigator.splashscreen.hide();
+
+    document.addEventListener("backbutton", onBackKeyDown, false);
   },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
     console.log("app/receivedEvent");
   }
 };
+
+// Handle the back button
+//
+function onBackKeyDown(e) {
+  try {
+    var activePage = $.mobile.activePage.attr('id');
+
+    if ($('#menu').hasClass('ui-panel-open')) {
+      $('#menu').panel("close");
+    } else if (activePage == 'HomePage') {
+
+      function checkButtonSelection(iValue) {
+        if (iValue == 2) {
+          navigator.app.exitApp();
+        }
+      }
+
+      e.preventDefault();
+      navigator.notification.confirm(
+        "Are you sure you want to EXIT the program?",
+        checkButtonSelection,
+        'EXIT APP:',
+        'Cancel,OK');
+    } else if (activePage == 'show-campaign') {
+      $("body").pagecontainer("change", "index_campaigns.html", {
+        transition: "pop",
+        reverse: true
+      });
+    } else if (activePage == 'show-news-post') {
+      $("body").pagecontainer("change", "index_news_posts.html", {
+        transition: "pop",
+        reverse: true
+      });
+    } else if (activePage == 'show-petition') {
+      $("body").pagecontainer("change", "index_petitions.html", {
+        transition: "pop",
+        reverse: true
+      });
+    } else if (activePage == 'show-survey') {
+      $("body").pagecontainer("change", "index_surveys.html", {
+        transition: "pop",
+        reverse: true
+      });
+    } else {
+      navigator.app.backHistory();
+    }
+  } catch (e) {
+    console.log('Exception: ' + e, 3);
+  }
+}
 
 function testPlugin() {
   var tests = {

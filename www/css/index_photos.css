@@ -1,4 +1,4 @@
-.photo-link {
+#index-photos .photo-container {
   display: block;
   margin: 2.5%;
   width: 45%;
@@ -11,6 +11,6 @@
   float: left;
 }
 
-.photo {
+#index-photos .photo {
   width:100%;
 }

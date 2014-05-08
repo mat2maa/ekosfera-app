@@ -6,10 +6,13 @@
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
+  <script type="text/javascript" src="js/klass.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  <link href="css/photoswipe.css" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css"/>
   <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/code.photoswipe.jquery-3.0.5.js"></script>
   <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -54,32 +57,33 @@
   <title>Екосфера</title>
 </head>
 <body>
-<div data-role="page"><!-- /page -->
+
+<div data-role="header" data-position="fixed" data-tap-toggle="false" data-id="sidebar-header" role="banner" data-theme="a" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-bar-a">
+  <h1 class="ui-title" role="heading" aria-level="1">&nbsp;</h1><!--Non-floating div-->
+  <a href="#menu" data-icon="bars" class="header-link header-link-bars header-link-left ui-link ui-btn-left ui-btn ui-btn-a ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all" data-theme="a" data-role="button" role="button"><span class="e">е</span><span class="kosfera">косфера</span></a>
+  <a href="settings.html" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none" data-role="button" role="button">Settings</a>
+  <a id="logout" href="#" class="ui-btn-right ui-btn ui-icon-power ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none" data-role="button" role="button">Logout</a>
+</div>
+<!-- /header -->
+
+<div data-role="page" id="index-surveys"><!-- /page -->
   <link rel="stylesheet" type="text/css" href="css/index_surveys.css"/>
 
-  <div data-role="panel" id="menu" data-display="overlay" data-theme="a">
+  <div data-role="panel" id="menu" data-display="overlay" data-theme="a" data-position-fixed="true">
     <ul data-role="listview">
       <li class="list-header">ekosfera.mk</li>
-      <li><a href="index_news_posts.html" data-ajax="true" data-transition="none" class="news-post-link">ВЕСТИ</a></li>
-      <li><a href="index_campaigns.html" data-ajax="true" data-transition="none" class="campaign-link">КАМПАЊИ</a></li>
-      <li><a href="index_petitions.html" data-ajax="true" data-transition="none" class="petition-link">ПЕТИЦИИ</a></li>
-      <li><a href="index_surveys.html" data-ajax="true" data-transition="none" class="survey-link">АНКЕТИ</a></li>
-      <li><a href="index_photos.html" data-ajax="true" data-transition="none" class="photo-link">СЛИКИ</a></li>
+      <li><a href="index_news_posts.html" data-ajax="true" data-transition="pop" class="news-post-link">ВЕСТИ</a></li>
+      <li><a href="index_campaigns.html" data-ajax="true" data-transition="pop" class="campaign-link">КАМПАЊИ</a></li>
+      <li><a href="index_petitions.html" data-ajax="true" data-transition="pop" class="petition-link">ПЕТИЦИИ</a></li>
+      <li><a href="index_surveys.html" data-ajax="true" data-transition="pop" class="survey-link">АНКЕТИ</a></li>
+      <li><a href="index_photos.html" data-ajax="true" data-transition="pop" class="photo-link">СЛИКИ</a></li>
       <li class="list-header">photo application</li>
-      <li><a href="upload_photo.html" data-ajax="true" data-transition="none" class="upload-photo-link">Upload Photo</a></li>
+      <li><a href="upload_photo.html" data-ajax="true" data-transition="pop" class="upload-photo-link">Upload Photo</a></li>
       <li class="list-header">calendar</li>
-      <li><a href="sync_calendar.html" data-ajax="true" data-transition="none" class="sync-calendar-link">Sync Calendar</a></li>
-      <li><a id="logout" href="#" data-ajax="true" data-transition="none" class="logout-link">ОДЈАВА</a></li>
+      <li><a href="sync_calendar.html" data-ajax="true" data-transition="pop" class="sync-calendar-link">Sync Calendar</a></li>
     </ul>
   </div>
   <!-- /panel -->
-
-  <div data-role="header" data-position="fixed" data-tap-toggle="false" data-id="sidebar-header">
-    <h1>&nbsp;</h1><!--Non-floating div-->
-    <a href="#menu" data-icon="bars" class="header-link header-link-bars header-link-left" data-theme="a"><span class="e">е</span><span class="kosfera">косфера</span></a>
-    <a href="settings.html" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none">Settings</a>
-  </div>
-  <!-- /header -->
 
   <div role="main" class="ui-content">
     <div class="surveys">
@@ -89,12 +93,13 @@
   </div>
   <!-- /content -->
 
-  <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="sidebar-footer">
-    <h4>Page Footer</h4>
-  </div>
-  <!-- /footer -->
-
   <script type="text/javascript" src="js/index_surveys.js"></script>
 </div>
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="sidebar-footer" role="contentinfo" data-theme="a" class="ui-footer ui-bar-inherit ui-footer-fixed slideup ui-bar-a">
+  <h4 class="ui-title" role="heading" aria-level="1">Page Footer</h4>
+</div>
+<!-- /footer -->
+
 </body>
 </html>

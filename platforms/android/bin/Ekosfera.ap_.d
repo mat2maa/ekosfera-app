@@ -89,6 +89,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/upload_photo.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/camera.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/gallery.png \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/header-link-back.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/header-link-bars.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/image-placeholder.png \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/img/logo.png \
@@ -116,12 +117,14 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.device \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.dialogs \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.vibration \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/com.borismus.webintent/www \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/com.borismus.webintent/www/webintent.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/me.apla.cordova.app-preferences/www \
@@ -135,6 +138,10 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/android \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/notification.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/android/notification.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file/www \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryEntry.js \
@@ -173,6 +180,8 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.media-capture/www/MediaFileData.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.vibration/www \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/org.apache.cordova.vibration/www/vibration.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res/icon \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res/screen \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res/icon/android \

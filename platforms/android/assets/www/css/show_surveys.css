@@ -1,13 +1,13 @@
-.survey {
+#show-survey .survey {
   word-break:break-all;
   clear: both;
 }
 
-.survey-title,
-.survey-article {
+#show-survey .survey-title,
+#show-survey .survey-article {
   margin-top: 20px;
 }
 
-.survey img {
+#show-survey .survey img {
   max-width: 100%;
 }

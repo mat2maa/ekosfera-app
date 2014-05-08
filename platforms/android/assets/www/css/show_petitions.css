@@ -1,13 +1,13 @@
-.petition {
+#show-petition .petition {
   word-break:break-all;
   clear: both;
 }
 
-.petition-title,
-.petition-article {
+#show-petition .petition-title,
+#show-petition .petition-article {
   margin-top: 20px;
 }
 
-.petition img {
+#show-petition .petition img {
   max-width: 100%;
 }

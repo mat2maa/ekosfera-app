@@ -63,24 +63,13 @@
       var html = "";
       $.each(data, function (key, value) {
         html = "<li>";
-        html += "<a href='http://" + host + "" + value.image.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-link'>";
-        html += "<img src='http://" + host + "" + value.image.url + "' title='" + value.caption + "' alt='" + value.caption + "' class='photo'>";
+        html += "<a href='http://" + host + "" + value.image.mobile.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-container'>";
+        html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' class='photo'>";
         html += "</a>";
         html += "</li>";
 
         $('.photos > .photos-list').append(html);
       });
-
-      (function (window, $, PhotoSwipe) {
-        var options = {
-          jQueryMobile: true,
-          captionAndToolbarAutoHideDelay: 0,
-          captionAndToolbarHide: false,
-          captionAndToolbarOpacity: 0.8,
-          captionAndToolbarShowEmptyCaptions: true
-        };
-        $(".photos-list a").photoSwipe(options);
-      }(window, window.jQuery, window.Code.PhotoSwipe));
     },
 
     onError: function (data) {
@@ -93,6 +82,16 @@
 
     onComplete: function (data) {
       console.log(data);
+      (function (window, $, PhotoSwipe) {
+        var options = {
+          jQueryMobile: true,
+          captionAndToolbarAutoHideDelay: 0,
+          captionAndToolbarHide: false,
+          captionAndToolbarOpacity: 0.8,
+          captionAndToolbarShowEmptyCaptions: true
+        };
+        $(".photos-list a").photoSwipe(options);
+      }(window, window.jQuery, window.Code.PhotoSwipe));
     }
 
   };

@@ -34,8 +34,16 @@
 
       var auth_token = Core.auth.authToken.get();
 
-      var params = location.search.substring(1);
-      params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+      var params = location.search.substring(1),
+        campaign = $("body").data("campaign");
+      if (typeof(campaign) == "string") {
+        params = JSON.parse('{"id": ' + parseInt(campaign) + '}');
+        console.log(params);
+      } else if (params != "") {
+        params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+        console.log(params);
+      }
+
       var id = params.id;
 
       if (localStorage.getItem("ekosfera_campaign_" + id) === null) {

@@ -1,13 +1,13 @@
-.campaign {
+#show-campaign .campaign {
   word-break:break-all;
   clear: both;
 }
 
-.campaign-title,
-.campaign-article {
+#show-campaign .campaign-title,
+#show-campaign .campaign-article {
   margin-top: 20px;
 }
 
-.campaign img {
+#show-campaign .campaign img {
   max-width: 100%;
 }

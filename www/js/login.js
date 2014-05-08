@@ -27,6 +27,8 @@
 
     authenticate: {
       onSubmit: function (form_obj) {
+        $.mobile.loading("show");
+
         console.log("form/onSubmit");
         var ajax_url = form_obj.attr('action'),
           email = $('#login').serializeObject().user.email,
@@ -45,6 +47,8 @@
       },
 
       onSuccess: function (data) {
+        $.mobile.loading("hide");
+
         console.log("form/onSuccess");
         console.log(data);
         console.log(data.token);
@@ -53,6 +57,8 @@
       },
 
       onError: function (data) {
+        $.mobile.loading("hide");
+
         console.log("form/onError");
         console.log("readyState: " + data.readyState);
         console.log("responseText: " + data.responseText);
@@ -64,11 +70,15 @@
       },
 
       onDenied: function (data) {
+        $.mobile.loading("hide");
+
         console.log("form/onDenied");
         console.log(data);
       },
 
       onComplete: function (data) {
+        $.mobile.loading("hide");
+
         console.log("form/onComplete");
         console.log(data);
       }
