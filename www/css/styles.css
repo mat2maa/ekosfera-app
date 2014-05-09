@@ -24,6 +24,12 @@
   /*min-height: 100% !important;*/
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
+
 /* Main */
 
 body {
@@ -146,6 +152,7 @@ body {
   height: 40px;
   background-color: white;
   float: left;
+  border: 1px solid #ddd;
 }
 
 .user-logo {

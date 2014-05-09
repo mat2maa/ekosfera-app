@@ -23,6 +23,20 @@
         Core.auth.logout();
         return false;
       });
+
+      $(document).on("taphold", ".photo-container > .photo", function (e) {
+        function checkButtonSelection(iValue) {
+          if (iValue == 2) {
+            navigator.app.exitApp();
+          }
+        }
+
+        navigator.notification.confirm(
+          "Vote for this photo?",
+          checkButtonSelection,
+          'Vote: ',
+          'Cancel,OK');
+      });
     },
 
     getPhotos: function (callback) {
@@ -64,7 +78,7 @@
       $.each(data, function (key, value) {
         html = "<li>";
         html += "<a href='http://" + host + "" + value.image.mobile.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-container'>";
-        html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' class='photo'>";
+        html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' data-id='" + value.id + "' class='photo'>";
         html += "</a>";
         html += "</li>";
 

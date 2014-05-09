@@ -25,17 +25,20 @@
       });
 
       $(document).on('click', '.sync-btn', function (e) {
+        $.mobile.loading("show");
 
         e.preventDefault();
 
         console.log('Sharing:AddEvent(Android)');
 
-        var startDate = new Date($(this).attr('data-year'), $(this).attr('data-month'), $(this).attr('data-day'), 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
-        var endDate = new Date($(this).attr('data-year'), $(this).attr('data-month'), parseInt($(this).attr('data-day')) + 1, 0, 0, 0, 0, 0);
+        var startDate = new Date($(this).attr('data-year'), parseInt($(this).attr('data-month')) - 1, $(this).attr('data-day'), 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
+        var endDate = new Date($(this).attr('data-year'), parseInt($(this).attr('data-month')) - 1, parseInt($(this).attr('data-day')) + 1, 0, 0, 0, 0, 0);
         var success = function (message) {
+          $.mobile.loading("hide");
           alert("Success: " + JSON.stringify(message));
         };
         var error = function (message) {
+          $.mobile.loading("hide");
           alert("Error: " + message);
         };
         cordova.exec(Core.sync_calendar.onSyncSuccess, Core.sync_calendar.onSyncError, "Calendar", "createEvent", [
@@ -51,12 +54,13 @@
       });
 
       $(document).on('click', '.sync-all', function (e) {
+        $.mobile.loading("show");
 
         e.preventDefault();
 
         $('.sync-btn').each(function () {
-          var startDate = new Date($(this).attr('data-year'), $(this).attr('data-month'), $(this).attr('data-day'), 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
-          var endDate = new Date($(this).attr('data-year'), $(this).attr('data-month'), parseInt($(this).attr('data-day')) + 1, 0, 0, 0, 0, 0);
+          var startDate = new Date($(this).attr('data-year'), parseInt($(this).attr('data-month')) - 1, $(this).attr('data-day'), 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
+          var endDate = new Date($(this).attr('data-year'), parseInt($(this).attr('data-month')) - 1, parseInt($(this).attr('data-day')) + 1, 0, 0, 0, 0, 0);
           cordova.exec(Core.sync_calendar.onSyncSuccess, Core.sync_calendar.onSyncError, "Calendar", "createEvent", [
             {
               "title": $(this).attr('data-title'),
@@ -73,6 +77,7 @@
     },
 
     getCalendarEvents: function (callback) {
+      $.mobile.loading("show");
       var auth_token = Core.auth.authToken.get();
 
       $.ajax({
@@ -106,6 +111,7 @@
     },
 
     onSuccess: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
 
       var html = "";
@@ -137,6 +143,7 @@
     },
 
     onError: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
       console.log("readyState: " + data.readyState);
       console.log("responseText: " + data.responseText);
@@ -145,18 +152,22 @@
     },
 
     onDenied: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
     },
 
     onComplete: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
     },
 
     onSyncSuccess: function (message) {
+      $.mobile.loading("hide");
       console.log("Success: " + JSON.stringify(message));
     },
 
     onSyncError: function (message) {
+      $.mobile.loading("hide");
       console.log("Error: " + message);
     }
 
