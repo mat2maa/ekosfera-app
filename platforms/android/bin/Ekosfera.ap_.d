@@ -53,6 +53,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/index_petitions.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/index_photos.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/index_surveys.html \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/index_videos.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/login.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/phonegap.js \
@@ -76,6 +77,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/index_petitions.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/index_photos.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/index_surveys.css \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/index_videos.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/loader.gif \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/login.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/photoswipe.css \
@@ -102,6 +104,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/index_petitions.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/index_photos.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/index_surveys.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/index_videos.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/jquery.serialize-object.compiled.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/klass.min.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/login.js \

@@ -24,6 +24,12 @@
   /*min-height: 100% !important;*/
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
+
 /* Main */
 
 body {
@@ -163,7 +169,8 @@ body {
 .news-post-title,
 .campaign-title,
 .petition-title,
-.survey-title {
+.survey-title,
+.video-title {
   line-height: 18px;
   margin-left: 0px;
 }
@@ -171,7 +178,8 @@ body {
 .news-post-short-description,
 .campaign-date,
 .petition-date,
-.survey-date {
+.survey-date,
+.video-short-description {
   line-height: 18px;
   margin-left: 0px;
   font-size: 12px;
@@ -201,7 +209,9 @@ body {
 .petition-title.truncated,
 .petition-date.truncated,
 .survey-title.truncated,
-.survey-date.truncated {
+.survey-date.truncated,
+.video-title.truncated,
+.video-short-description.truncated {
   margin-left: 10px;
 }
 
@@ -248,16 +258,20 @@ body {
   border-left: 5px solid #7f6e00 !important;
 }
 
-#menu .photo-link {
+#menu .video-link {
   border-left: 5px solid #9c6b5a !important;
+}
+
+#menu .photo-link {
+  border-left: 5px solid #29b397 !important;
 }
 
 #menu .upload-photo-link {
-  border-left: 5px solid #285b8f !important;
+  border-left: 5px solid #29b397 !important;
 }
 
 #menu .sync-calendar-link {
-  border-left: 5px solid #9c6b5a !important;
+  border-left: 5px solid #2ea64a !important;
 }
 
 #menu .logout-link {

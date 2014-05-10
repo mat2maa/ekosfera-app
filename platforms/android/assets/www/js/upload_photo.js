@@ -77,6 +77,7 @@
         $img.attr('src', imageData);
         $img.css({position: 'relative', width: '100%', height: 'auto'});
         $('#photo_wrap').html($img);
+        $.mobile.silentScroll($("#photo_wrap").offset().top);
       },
 
       onURISuccess: function (imageURI) {
@@ -87,6 +88,7 @@
         $img.attr('src', imageURI);
         $img.css({position: 'relative', width: '100%', height: 'auto'});
         $('#photo_wrap').html($img);
+        $.mobile.silentScroll($("#photo_wrap").offset().top);
       },
 
       onFail: function (message) {
@@ -103,6 +105,12 @@
 
         var params = {};
         params.caption = $('#caption').val();
+        if (JSON.parse(localStorage.getItem("lon")) != null) {
+          params.lon = JSON.parse(localStorage.getItem("lon"));
+        }
+        if (JSON.parse(localStorage.getItem("lat")) != null) {
+          params.lat = JSON.parse(localStorage.getItem("lat"));
+        }
         params.auth_token = Core.auth.authToken.get();
 
         console.log(params);

@@ -71,22 +71,22 @@
 
   <div data-role="panel" id="menu" data-display="overlay" data-theme="a" data-position-fixed="true">
     <ul data-role="listview">
-      <li class="list-header">ekosfera.mk</li>
+      <li class="list-header">latest from ekosfera.mk</li>
       <li><a href="index_news_posts.html" data-ajax="true" data-transition="pop" class="news-post-link">ВЕСТИ</a></li>
       <li><a href="index_campaigns.html" data-ajax="true" data-transition="pop" class="campaign-link">КАМПАЊИ</a></li>
       <li><a href="index_petitions.html" data-ajax="true" data-transition="pop" class="petition-link">ПЕТИЦИИ</a></li>
       <li><a href="index_surveys.html" data-ajax="true" data-transition="pop" class="survey-link">АНКЕТИ</a></li>
+      <li><a href="index_videos.html" data-ajax="true" data-transition="pop" class="video-link">ВИДЕО</a></li>
       <li><a href="index_photos.html" data-ajax="true" data-transition="pop" class="photo-link">СЛИКИ</a></li>
-      <li class="list-header">photo application</li>
+      <li class="list-header">accessories</li>
       <li><a href="upload_photo.html" data-ajax="true" data-transition="pop" class="upload-photo-link">Upload Photo</a></li>
-      <li class="list-header">calendar</li>
       <li><a href="sync_calendar.html" data-ajax="true" data-transition="pop" class="sync-calendar-link">Sync Calendar</a></li>
     </ul>
   </div>
   <!-- /panel -->
 
   <div role="main" class="ui-content">
-    <div class="error-msg"></div>
+    <div id="geolocation"></div>
     <a href="#" id="upload_photo" class="photo-button">
       <img src="img/gallery.png" alt="Gallery Button"/>
       <br/>
@@ -118,6 +118,16 @@
   <!-- /content -->
 
   <script type="text/javascript" src="js/upload_photo.js"></script>
+  <script>
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+      localStorage.setItem('lon', JSON.stringify(position.coords.latitude));
+      localStorage.setItem('lat', JSON.stringify(position.coords.longitude));
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess);
+  </script>
 </div>
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="sidebar-footer" role="contentinfo" data-theme="a" class="ui-footer ui-bar-inherit ui-footer-fixed slideup ui-bar-a">

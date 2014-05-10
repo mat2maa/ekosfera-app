@@ -313,7 +313,8 @@ module.exports.metadata =
     "me.apla.cordova.app-preferences": "0.4.0",
     "org.apache.cordova.inappbrowser": "0.4.1-dev",
     "org.apache.cordova.vibration": "0.3.9-dev",
-    "org.apache.cordova.dialogs": "0.2.8-dev"
+    "org.apache.cordova.dialogs": "0.2.8-dev",
+    "org.apache.cordova.geolocation": "0.3.7"
 }
 // BOTTOM OF METADATA
 });

@@ -33,6 +33,8 @@
     },
 
     getPhotos: function (callback) {
+      $.mobile.loading("show");
+
       var auth_token = Core.auth.authToken.get();
 
       $.ajax({
@@ -66,49 +68,73 @@
     },
 
     onSuccess: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
       var html = "";
-      $.each(data, function (key, value) {
-        if (typeof value.id == "number") {
-          var username = (typeof value.user.parent == "object") ? value.user.parent.user_profile.name : value.user.user_profile.name;
+      if (data.length == 1) {
+        html = "<li>";
+        html += "<table class='image-table'>";
+        html += "<tbody>";
+        html += "<tr>";
+        html += "<td>";
+        html += "No photos. Please be the first to <a href='upload_photo.html' data-ajax='true' data-transition='pop' class='upload-photo-link'>upload one</a>!";
+        html += "</td>";
+        html += "</tr>";
+        html += "</tbody>";
+        html += "</table>";
+        html += "</li>";
 
-          html = "<li>";
-          html += "<table class='image-table'>";
-          html += "<tbody>";
-          html += "<tr>";
-          html += "<td>";
-          html += "<a href='http://" + host + "" + value.image.mobile.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-container'>";
-          html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' data-id='" + value.id + "' class='photo'>";
-          html += "</td>";
-          html += "<td>";
-          html += "<a href='#' class='vote-for-photo ui-btn ui-btn-icon-right ui-icon-star' data-id='" + value.id + "'>Vote</a>";
-          html += "<p>Posted by: " + username + "</p>";
-          html += "<p>Caption: " + value.caption + "</p>";
-          html += "<p>Votes: " + value.votes + "</p>";
-          html += "</td>";
-          html += "</tbody>";
-          html += "</tr>";
-          html += "</table>";
-          html += "</a>";
-          html += "</li>";
+        $('.photos > .photos-list').append(html);
 
+      } else {
+        $.each(data, function (key, value) {
+          if (typeof value.id == "number") {
+            var username = (typeof value.user.parent == "object") ? value.user.parent.user_profile.name : value.user.user_profile.name;
+            var votes = value.votes == null ? 0 : value.votes;
+
+            html = "<li>";
+            html += "<table class='image-table'>";
+            html += "<tbody>";
+            html += "<tr>";
+            html += "<td>";
+            html += "<a href='http://" + host + "" + value.image.mobile.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-container'>";
+            html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' data-id='" + value.id + "' class='photo'>";
+            html += "</td>";
+            html += "<td>";
+            html += "<a href='#' class='vote-for-photo ui-btn ui-btn-icon-right ui-icon-star' data-id='" + value.id + "'>Vote</a>";
+            html += "<p>";
+            html += "Posted by: " + username + "<br/>";
+            html += "Caption: " + value.caption + "<br/>";
+            html += "Votes: <span class='number-of-votes-" + value.id + "'>" + votes + "</span>";
+            html += "</p>";
+            html += "</td>";
+            html += "</tr>";
+            html += "</tbody>";
+            html += "</table>";
+            html += "</a>";
+            html += "</li>";
+          }
           $('.photos > .photos-list').append(html);
-        }
-      });
-      $.each(data[0].votes, function (index, value) {
-        $('.vote-for-photo[data-id = ' + value + ']').addClass('disabled');
-      });
+        });
+
+        $.each(data[0].votes, function (index, value) {
+          $('.vote-for-photo[data-id = ' + value + ']').addClass('disabled');
+        });
+      }
     },
 
     onError: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
     },
 
     onDenied: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
     },
 
     onComplete: function (data) {
+      $.mobile.loading("hide");
       console.log(data);
       (function (window, $, PhotoSwipe) {
         var options = {
@@ -155,6 +181,8 @@
 
         console.log(data);
         $('.vote-for-photo[data-id = ' + data.id + ']').addClass('disabled');
+        var numberOfVotes = parseInt($('.number-of-votes-' + data.id).html()) + 1;
+        $('.number-of-votes-' + data.id).html(numberOfVotes);
       },
 
       onVoteError: function (data) {
