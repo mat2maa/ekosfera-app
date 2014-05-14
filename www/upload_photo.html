@@ -122,18 +122,13 @@
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-      localStorage.setItem('lon', JSON.stringify(position.coords.latitude));
-      localStorage.setItem('lat', JSON.stringify(position.coords.longitude));
+      localStorage.setItem('ekosfera_lon', JSON.stringify(position.coords.latitude));
+      localStorage.setItem('ekosfera_lat', JSON.stringify(position.coords.longitude));
     }
 
     navigator.geolocation.getCurrentPosition(onSuccess);
   </script>
 </div>
-
-<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="sidebar-footer" role="contentinfo" data-theme="a" class="ui-footer ui-bar-inherit ui-footer-fixed slideup ui-bar-a">
-  <h4 class="ui-title" role="heading" aria-level="1">Page Footer</h4>
-</div>
-<!-- /footer -->
 
 </body>
 </html>
