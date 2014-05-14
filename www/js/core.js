@@ -7,18 +7,20 @@
     init: function () {
       console.log("core/init");
 
-      Core.usefulTips.updateUsefulTip(
-        {
-          onSuccess: Core.usefulTips.onSuccess,
-          onError: Core.usefulTips.onError,
-          onDenied: Core.usefulTips.onDenied,
-          onComplete: Core.usefulTips.onComplete
-        }
-      );
+      if (Core.auth.isAuthenticated()) {
+        Core.usefulTips.updateUsefulTip(
+          {
+            onSuccess: Core.usefulTips.onSuccess,
+            onError: Core.usefulTips.onError,
+            onDenied: Core.usefulTips.onDenied,
+            onComplete: Core.usefulTips.onComplete
+          }
+        );
 
-      Core.populateSettingsMenu();
-      Core.footerInit();
-      Core.bindEvents();
+        Core.populateSettingsMenu();
+        Core.footerInit();
+        Core.bindEvents();
+      }
 
     },
 
@@ -223,17 +225,22 @@
         footer += "<a href='#' class='ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-notext ui-corner-all refresh-useful-tip' data-ajax='false' data-transition='none' data-role='button' role='button'>Refresh Useful Tip</a>";
         footer += "</div>";
         $("body").append(footer);
+        var footerHeight = $("[data-role='footer']").height() + 21;
+        console.log(footerHeight);
+        $("[data-role='page']").css({
+          "padding-bottom": footerHeight
+        });
+        $("[data-position='fixed']").trigger('updatelayout');
       }
 
     },
 
     bindEvents: function () {
 
-      $(document).on("click", ".refresh-useful-tip", function(e) {
+      $(document).on("click", ".refresh-useful-tip", function (e) {
         e.preventDefault();
         Core.usefulTips.refreshUsefulTip();
       });
-
     }
 
   };
@@ -323,6 +330,13 @@
 
     showView: function () {
       $("#content").show();
+
+      var footerHeight = $("[data-role='footer']").height() + 21;
+      console.log(footerHeight);
+      $("[data-role='page']").css({
+        "padding-bottom": footerHeight
+      });
+      $("[data-position='fixed']").trigger('updatelayout');
     },
 
     hideView: function () {

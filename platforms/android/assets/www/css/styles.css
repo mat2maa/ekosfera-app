@@ -17,7 +17,7 @@
 
 [data-role="page"] {
   padding-top: 43px;
-  padding-bottom: 43px;
+  padding-bottom: 0px;
 }
 
 .ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
@@ -88,6 +88,17 @@ body {
   right: 0px;
   bottom: 0px;
   border-top: 1px solid #efefef;
+}
+
+[data-role="footer"] h4 {
+  margin: 10px;
+}
+
+[data-role="footer"] p {
+  margin: 5px 10px;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: normal;
 }
 
 .e {
@@ -282,7 +293,9 @@ body {
   right: 40px;
 }
 
-
+.refresh-useful-tip {
+  margin-top: 0;
+}
 
 
 

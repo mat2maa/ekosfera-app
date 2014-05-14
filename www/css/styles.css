@@ -17,7 +17,7 @@
 
 [data-role="page"] {
   padding-top: 43px;
-  padding-bottom: 43px;
+  padding-bottom: 0px;
 }
 
 .ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {

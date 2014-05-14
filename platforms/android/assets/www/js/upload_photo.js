@@ -105,11 +105,11 @@
 
         var params = {};
         params.caption = $('#caption').val();
-        if (JSON.parse(localStorage.getItem("lon")) != null) {
-          params.lon = JSON.parse(localStorage.getItem("lon"));
+        if (JSON.parse(localStorage.getItem("ekosfera_lon")) != null) {
+          params.lon = JSON.parse(localStorage.getItem("ekosfera_lon"));
         }
-        if (JSON.parse(localStorage.getItem("lat")) != null) {
-          params.lat = JSON.parse(localStorage.getItem("lat"));
+        if (JSON.parse(localStorage.getItem("ekosfera_lat")) != null) {
+          params.lat = JSON.parse(localStorage.getItem("ekosfera_lat"));
         }
         params.auth_token = Core.auth.authToken.get();
 

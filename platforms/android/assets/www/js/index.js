@@ -16,7 +16,6 @@
         return false;
       });
     }
-
   };
 
   $(Core.index.init);
