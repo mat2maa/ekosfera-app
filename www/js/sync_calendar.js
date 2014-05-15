@@ -136,7 +136,7 @@
 
         $('.calendar-events > .events-list').append(html);
       });
-      html = "<a href='#" + data.id + ".html' class='sync-all ui-btn ui-icon-recycle ui-btn-icon-right'>Sync All</a>";
+      html = "<a href='#" + data.id + ".html' class='sync-all ui-btn ui-icon-recycle ui-btn-icon-right'>Усогласи ги сите</a>";
       $('.calendar-events > .events-list').prepend(html);
       $('.calendar-events > .events-list > li:first').addClass("ui-first-child");
       $('.calendar-events > .events-list > li:last').addClass("ui-last-child");

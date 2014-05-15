@@ -77,7 +77,7 @@
         html += "<tbody>";
         html += "<tr>";
         html += "<td>";
-        html += "No photos. Please be the first to <a href='upload_photo.html' data-ajax='true' data-transition='pop' class='upload-photo-link'>upload one</a>!";
+        html += "Нема слики. Бидете прв/а што ќе <a href='upload_photo.html' data-ajax='true' data-transition='pop' class='upload-photo-link'>објави</a>!";
         html += "</td>";
         html += "</tr>";
         html += "</tbody>";
@@ -101,11 +101,11 @@
             html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' data-id='" + value.id + "' class='photo'>";
             html += "</td>";
             html += "<td>";
-            html += "<a href='#' class='vote-for-photo ui-btn ui-btn-icon-right ui-icon-star' data-id='" + value.id + "'>Vote</a>";
+            html += "<a href='#' class='vote-for-photo ui-btn ui-btn-icon-right ui-icon-star' data-id='" + value.id + "'>Гласај</a>";
             html += "<p>";
-            html += "Posted by: " + username + "<br/>";
-            html += "Caption: " + value.caption + "<br/>";
-            html += "Votes: <span class='number-of-votes-" + value.id + "'>" + votes + "</span>";
+            html += "Објавено од: " + username + "<br/>";
+            html += "Опис на слика: " + value.caption + "<br/>";
+            html += "Гласови: <span class='number-of-votes-" + value.id + "'>" + votes + "</span>";
             html += "</p>";
             html += "</td>";
             html += "</tr>";
