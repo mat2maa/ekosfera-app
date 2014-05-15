@@ -34,13 +34,54 @@ var app = {
     app.receivedEvent('deviceready');
     navigator.splashscreen.hide();
 
+    checkConnection();
+    document.addEventListener("resume", checkConnection, false);
+    document.addEventListener("offline", checkConnection, false);
+    document.addEventListener("online", checkConnection, false);
+
     document.addEventListener("backbutton", onBackKeyDown, false);
+
   },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
     console.log("app/receivedEvent");
   }
 };
+
+function exitApp() {
+  navigator.app.exitApp();
+}
+
+function checkConnection() {
+  var networkState = navigator.connection.type;
+
+  var states = {};
+  states[Connection.UNKNOWN]  = 'Unknown connection';
+  states[Connection.ETHERNET] = 'Ethernet connection';
+  states[Connection.WIFI]     = 'WiFi connection';
+  states[Connection.CELL_2G]  = 'Cell 2G connection';
+  states[Connection.CELL_3G]  = 'Cell 3G connection';
+  states[Connection.CELL_4G]  = 'Cell 4G connection';
+  states[Connection.CELL]     = 'Cell generic connection';
+  states[Connection.NONE]     = 'No network connection';
+
+  if (states[networkState] == 'Unknown connection' || states[networkState] == 'Cell generic connection' || states[networkState] == 'No network connection') {
+    $("#checkConnection").popup("open");
+  } else {
+    $("#checkConnection").popup("close");
+  }
+}
+
+function openSettings() {
+  window.plugins.webintent.startActivity({
+      action: "android.settings.SETTINGS"
+    },
+    function () {
+    },
+    function () {
+      $("#openSettings").popup("open");
+    });
+}
 
 // Handle the back button
 //
@@ -50,20 +91,10 @@ function onBackKeyDown(e) {
 
     if ($('#menu').hasClass('ui-panel-open')) {
       $('#menu').panel("close");
-    } else if (activePage == 'HomePage') {
-
-      function checkButtonSelection(iValue) {
-        if (iValue == 2) {
-          navigator.app.exitApp();
-        }
-      }
+    } else if (activePage == 'HomePage' || activePage == 'login-page') {
 
       e.preventDefault();
-      navigator.notification.confirm(
-        "Are you sure you want to EXIT the program?",
-        checkButtonSelection,
-        'EXIT APP:',
-        'Cancel,OK');
+      $("#exitApp").popup("open");
     } else if (activePage == 'show-campaign') {
       $("body").pagecontainer("change", "index_campaigns.html", {
         transition: "pop",

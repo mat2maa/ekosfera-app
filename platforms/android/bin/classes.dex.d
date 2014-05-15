@@ -120,6 +120,8 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/mediacapture/Capture$3.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/mediacapture/Capture.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/mediacapture/FileHelper.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
+/Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/networkinformation/NetworkManager.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/splashscreen/SplashScreen.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/classes/org/apache/cordova/vibration/Vibration.class \
 /Users/matthewager/Sites/ekosfera/platforms/android/bin/dexedLibs/classes-e344ad3052d4a3368d942d71a208540a.jar \

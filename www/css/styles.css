@@ -30,6 +30,10 @@ a.disabled {
   opacity: 0.4;
 }
 
+.ui-popup-screen {
+  position: fixed !important;
+}
+
 /* Main */
 
 body {

@@ -43,18 +43,21 @@
     <feature name="Capture">
         <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
-    <name>Ekosfera</name>
+    <name>Екосфера</name>
     <description>
-        Ekosfera
+        News, campaigns, surveys, petitions, videos all from ekosfera.mk as well as the ability to upload photographs and sync your calendar.
     </description>
-    <author email="matthew.a.ager@googlemail.com" href="http://matthewager.com">
-        Matthew Ager
+    <author email="info@kukya.com" href="http://kukya.com/">
+        Kukya
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />

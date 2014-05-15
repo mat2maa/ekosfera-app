@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ager.ekosfera" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Ekosfera</name>
+    <name>Екосфера</name>
     <description>
-        Ekosfera
+        News, campaigns, surveys, petitions, videos all from ekosfera.mk as well as the ability to upload photographs and sync your calendar.
     </description>
-    <author email="matthew.a.ager@googlemail.com" href="http://matthewager.com">
-        Matthew Ager
+    <author email="info@kukya.com" href="http://kukya.com/">
+        Kukya
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />

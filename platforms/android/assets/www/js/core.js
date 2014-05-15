@@ -241,6 +241,23 @@
         e.preventDefault();
         Core.usefulTips.refreshUsefulTip();
       });
+
+      $(document).on("click", ".checkConnection-confirm", function() {
+        openSettings();
+        $("#checkConnection").popup("close");
+      });
+
+      $(document).on("click", ".openSettings-confirm", function() {
+        exitApp();
+      });
+
+      $(document).on("click", ".exitApp-confirm", function() {
+        exitApp();
+      });
+
+      $(document).on("click", ".exitApp-cancel", function() {
+        $("#exitApp").popup("close");
+      });
     }
 
   };
