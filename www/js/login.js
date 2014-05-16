@@ -69,7 +69,14 @@
         console.log(data);
         console.log(data.token);
         Core.auth.authToken.set(data.token, 30);
-        window.location = 'index.html';
+
+        var settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
+
+        if (settings == null) {
+          window.location = 'settings.html';
+        } else {
+          window.location = 'index.html';
+        }
       },
 
       onError: function (data) {

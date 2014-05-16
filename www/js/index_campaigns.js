@@ -133,7 +133,7 @@
         html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
         html += "</div>";
         html += "<div class='campaign-title truncated'>";
-        html += value.title;
+        html += value.name;
         html += "</div>";
         html += "<br />";
         html += "<div class='campaign-date truncated'>";

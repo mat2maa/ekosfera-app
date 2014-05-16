@@ -4,8 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="format-detection" content="telephone=no"/>
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-  <meta name="viewport"
-        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
   <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css"/>
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.4.2.min.js"></script>
@@ -78,8 +77,8 @@
       <li><a href="index_surveys.html" data-ajax="false" data-transition="none" class="survey-link">АНКЕТИ</a></li>
       <li><a href="index_videos.html" data-ajax="false" data-transition="none" class="video-link">ВИДЕА</a></li>
       <li><a href="index_photos.html" data-ajax="false" data-transition="none" class="photo-link">СЛИКИ</a></li>
+      <li><a href="sync_calendar.html" data-ajax="false" data-transition="none" class="sync-calendar-link">КАЛЕНДАР</a></li>
       <li><a href="upload_photo.html" data-ajax="false" data-transition="none" class="upload-photo-link">ПРИЈАВИ ЕКОЛОШКИ ПРОБЛЕМ</a></li>
-      <li><a href="sync_calendar.html" data-ajax="false" data-transition="none" class="sync-calendar-link">УСОГЛАСИ СО КАЛЕНДАР</a></li>
     </ul>
   </div>
   <!-- /content -->
@@ -89,10 +88,10 @@
   <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="checkConnection-popup">
     <div data-role="popup" id="checkConnection" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
       <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
-        <h1 class="ui-title" role="heading" aria-level="1">Internet connection</h1>
+        <h1 class="ui-title" role="heading" aria-level="1">Интернет конекција</h1>
       </div>
       <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">You are not connected to the internet, please change your settings.</h3>
+        <h3 class="ui-title">Немате интернет. Одете во Settings за да овозможите интернет конекција.</h3>
 
         <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all checkConnection-confirm" role="button" value="Settings">
       </div>
@@ -106,9 +105,9 @@
         <h1 class="ui-title" role="heading" aria-level="1"></h1>
       </div>
       <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">Failed to open settings menu, please do so manually. The app will now exit.</h3>
+        <h3 class="ui-title">Не се отвора менито Settings, треба да го отворите рачно. Апликацијата сега ќе се затвори.</h3>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all openSettings-confirm" role="button" value="Exit">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all openSettings-confirm" role="button" value="Излез">
       </div>
     </div>
   </div>
@@ -117,13 +116,13 @@
   <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="exitApp-popup">
     <div data-role="popup" id="exitApp" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
       <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
-        <h1 class="ui-title" role="heading" aria-level="1">Exit Ekosfera:</h1>
+        <h1 class="ui-title" role="heading" aria-level="1">Излези од Екосфера:</h1>
       </div>
       <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">Are you sure you want to exit the program?</h3>
+        <h3 class="ui-title">Сигурни сте дека сакате да ја затворите програмата?</h3>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all exitApp-cancel" role="button" value="Cancel">
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" class="ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all exitApp-confirm" role="button" value="OK">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all exitApp-cancel" role="button" value="Откажи">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" class="ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all exitApp-confirm" role="button" value="Излез">
       </div>
     </div>
   </div>

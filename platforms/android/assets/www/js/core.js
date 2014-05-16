@@ -183,7 +183,10 @@
       var settings = JSON.parse(localStorage.getItem("ekosfera_settings")),
         $showTips = $("#show-useful-tips-checkbox"),
         $tipsOptions = $(".useful-tip-option"),
-        settingsObject = {};
+        settingsObject = {},
+        $sync1 = $('#sync-calendar-1'),
+        $sync2 = $('#sync-calendar-2'),
+        $sync3 = $('#sync-calendar-3');
 
       if (settings == null) {
         $showTips.prop("checked", true).checkboxradio("refresh");
@@ -193,12 +196,22 @@
           settingsObject[index] = true;
         });
 
+        $sync1.prop("checked", true).checkboxradio("refresh");
+        settingsObject["syncCalendar"] = 1;
+
         localStorage.setItem("ekosfera_settings", JSON.stringify(settingsObject));
       } else {
         $showTips.prop("checked", settings["tipsOn"]).checkboxradio("refresh");
         $tipsOptions.each(function (index) {
           $(this).prop("checked", settings[index]).checkboxradio("refresh");
         });
+        if (settings["syncCalendar"] == 1) {
+          $sync1.prop("checked", true).checkboxradio("refresh");
+        } else if (settings["syncCalendar"] == 2) {
+          $sync2.prop("checked", true).checkboxradio("refresh");
+        } else if (settings["syncCalendar"] == 3) {
+          $sync3.prop("checked", true).checkboxradio("refresh");
+        }
       }
 
       if ($showTips.prop("checked") == false) {
@@ -257,6 +270,10 @@
 
       $(document).on("click", ".exitApp-cancel", function() {
         $("#exitApp").popup("close");
+      });
+
+      $(document).on("click", ".newSettings-confirm", function() {
+        $("#newSettings").popup("close");
       });
     }
 

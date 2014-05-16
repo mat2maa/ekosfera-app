@@ -34,7 +34,10 @@
 
       var settings = JSON.parse(localStorage.getItem("ekosfera_settings")),
         $showTips = $("#show-useful-tips-checkbox"),
-        $tipsOptions = $(".useful-tip-option");
+        $tipsOptions = $(".useful-tip-option"),
+        $sync1 = $('#sync-calendar-1'),
+        $sync2 = $('#sync-calendar-2'),
+        $sync3 = $('#sync-calendar-3');
 
       $showTips.on("click", function () {
         if ($(this).prop("checked") == false) {
@@ -85,6 +88,20 @@
         });
       });
 
+      $sync1.on("click", function() {
+        settings["syncCalendar"] = 1;
+        localStorage.setItem("ekosfera_settings", JSON.stringify(settings));
+      });
+
+      $sync2.on("click", function() {
+        settings["syncCalendar"] = 2;
+        localStorage.setItem("ekosfera_settings", JSON.stringify(settings));
+      });
+
+      $sync3.on("click", function() {
+        settings["syncCalendar"] = 3;
+        localStorage.setItem("ekosfera_settings", JSON.stringify(settings));
+      });
     }
   };
 

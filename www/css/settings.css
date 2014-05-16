@@ -1,0 +1,6 @@
+.notification {
+  white-space: normal !important;
+  overflow: auto !important;
+  text-overflow: initial !important;
+  word-wrap:break-word !important;
+}
