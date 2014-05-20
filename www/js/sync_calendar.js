@@ -135,51 +135,41 @@
       console.log(data);
 
       var html = "";
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       var settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
 
-      $.each(data, function (key, value) {
+      var by_date = _.groupBy(data, function (event) {
+        var yyyy = parseInt(event["year"]), mm = parseInt(event["month"]);
 
-        var year = value.year;
-        var month = value.month;
-        var day = value.day;
-        var title = value.title;
-        var location = "Ekosfera";
-        var notes = value.short_description;
-        var text = strip_tags(value.article, '<i><b><br><p>');
+        return mm + "/" + yyyy;
+      });
 
-        if (settings["syncCalendar"] == 1) {
-          html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit'>";
-          html += day + "/" + month + "/" + year;
-          html += "</li>";
-          html += "<li>";
-          html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
-          html += "<div class='calendar-event truncated'>";
-          html += "<h4>" + title + "</h4>";
-          html += "<p>" + notes + "</p>";
-          html += "</div>";
-          html += "<p class='calendar-text'>" + text + "</p>";
-          html += "</a>";
-          html += "</li>";
-          $('.calendar-events > .events-list').append(html);
-        } else if (settings["syncCalendar"] == 2) {
-          html = "<li>";
-          html += "<a href='#' class='ui-btn' data-corners='true' data-enhanced='true' value='Sync'>";
-          html += "<p>" + day + "/" + month + "/" + year + "</p>";
-          html += "<h4>" + title + "</h4>";
-          html += "<p>" + notes + "</p>";
-          html += "</div>";
-          html += "<p class='calendar-text'>" + text + "</p>";
-          html += "</a>";
-          html += "</li>";
-          $('.calendar-events > .events-list').append(html);
-        } else if (settings["syncCalendar"] == 3) {
-          var startDate = new Date(year, month - 1, day, 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
-          var today = new Date();
+      sortDates(Object.keys(by_date), "ASC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit calendar-list-divider'>";
+        html += numToNameDate(v);
+        html += "</li>";
+        _.each(by_date[v], function (value) {
+          var year = value.year;
+          var month = value.month;
+          var day = value.day;
+          var title = value.title;
+          var location = "Ekosfera";
+          var notes = value.short_description;
+          var text = strip_tags(value.article, '<i><b><br><p>');
 
-          if (startDate >= today) {
-            html = "<li>";
+          if (settings["syncCalendar"] == 1) {
+            html += "<li>";
             html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
             html += "<div class='calendar-event truncated'>";
+            html += "<h4>" + title + "</h4>";
+            html += "<p>" + notes + "</p>";
+            html += "</div>";
+            html += "<p class='calendar-text'>" + text + "</p>";
+            html += "</a>";
+            html += "</li>";
+          } else if (settings["syncCalendar"] == 2) {
+            html += "<li>";
+            html += "<a href='#' class='ui-btn' data-corners='true' data-enhanced='true' value='Sync'>";
             html += "<p>" + day + "/" + month + "/" + year + "</p>";
             html += "<h4>" + title + "</h4>";
             html += "<p>" + notes + "</p>";
@@ -187,10 +177,27 @@
             html += "<p class='calendar-text'>" + text + "</p>";
             html += "</a>";
             html += "</li>";
-            $('.calendar-events > .events-list').append(html);
+          } else if (settings["syncCalendar"] == 3) {
+            var startDate = new Date(year, month - 1, day, 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
+            var today = new Date();
+
+            if (startDate >= today) {
+              html += "<li>";
+              html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
+              html += "<div class='calendar-event truncated'>";
+              html += "<p>" + day + "/" + month + "/" + year + "</p>";
+              html += "<h4>" + title + "</h4>";
+              html += "<p>" + notes + "</p>";
+              html += "</div>";
+              html += "<p class='calendar-text'>" + text + "</p>";
+              html += "</a>";
+              html += "</li>";
+            }
           }
-        }
+        });
+        $('.calendar-events > .events-list').append(html);
       });
+
 
       if (settings["syncCalendar"] == 1 || settings["syncCalendar"] == 3) {
         html = "<a href='#" + data.id + ".html' class='sync-all ui-btn ui-icon-recycle ui-btn-icon-right'>Усогласи ги сите</a>";
