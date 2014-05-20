@@ -327,18 +327,24 @@ body {
 }
 
 .calendar-list-divider {
-  text-shadow: #FAFAFA 1px 1px 0px !important;
+  text-shadow: #FAFAFA 1px 1px 0 !important;
   border-bottom: 1px solid #DDDDDD !important;
   border-top: 4px solid #2ea64a !important;
   color: #2ea64a !important;
 }
 
 .news-post-list-divider {
-  text-shadow: #FAFAFA 1px 1px 0px !important;
+  text-shadow: #FAFAFA 1px 1px 0 !important;
   border-bottom: 1px solid #DDDDDD !important;
   border-top: 4px solid #285b8f !important;
   color: #285b8f !important;
 }
 
+.campaign-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #e5c700 !important;
+  color: #e5c700 !important;
+}
 
 

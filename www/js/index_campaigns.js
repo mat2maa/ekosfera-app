@@ -28,7 +28,7 @@
         return false;
       });
 
-      $(document).on("click", ".link-to-campaign", function() {
+      $(document).on("click", ".link-to-campaign", function () {
         var id = $(this).attr('data-id');
         $("body").data("campaign", id);
       });
@@ -119,42 +119,45 @@
       $.mobile.loading("hide");
       console.log(data);
       localStorage.setItem('ekosfera_campaigns', JSON.stringify(data));
+
       var html = "";
-      $.each(data, function (key, value) {
-        var logoURL = (typeof value.users[0].parent == "object") ? value.users[0].parent.user_profile.base64uri : value.users[0].user_profile.base64uri;
-        var date = new Date(value.start_date);
-        var day = date.getDay();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
 
-        html = "<li>";
-        html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
-        html += "<div class='user-logo-outer'>";
-        html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
-        html += "</div>";
-        html += "<div class='campaign-title truncated'>";
-        html += value.name;
-        html += "</div>";
-        html += "<br />";
-        html += "<div class='campaign-date truncated'>";
-        html += day + "/" + month + "/" + year;
-        html += "</div>";
-        html += "</a>";
+      var by_date = _.groupBy(data, function (campaign) {
+        var campaignDate = campaign["created_at"].split("T")[0],
+          yyyy = parseInt(campaignDate.split("-")[0]),
+          mm = parseInt(campaignDate.split("-")[1]);
+
+        return mm + "/" + yyyy;
+      });
+
+      sortDates(Object.keys(by_date), "DESC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit campaign-list-divider'>";
+        html += numToNameDate(v);
         html += "</li>";
+        _.each(by_date[v], function (value) {
+          var logoURL = (typeof value.users[0].parent == "object") ? value.users[0].parent.user_profile.base64uri : value.users[0].user_profile.base64uri;
+          var date = new Date(value.start_date);
+          var day = date.getDay();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
 
+          html += "<li>";
+          html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
+          html += "<div class='user-logo-outer'>";
+          html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+          html += "</div>";
+          html += "<div class='campaign-title truncated'>";
+          html += value.name;
+          html += "</div>";
+          html += "<br />";
+          html += "<div class='campaign-date truncated'>";
+          html += day + "/" + month + "/" + year;
+          html += "</div>";
+          html += "</a>";
+          html += "</li>";
+
+        });
         $('.campaigns > .campaigns-list').append(html);
-//        $.each($('.campaigns > .campaigns-list > li'), function(i, el){
-//
-//          $(el).css({'opacity':0});
-//
-//          setTimeout(function(){
-//            $(el).animate({
-//              'opacity':1.0
-//            }, 350);
-//          }, 25 + ( i * 25 ));
-//
-//        });
-
       });
       $('.campaigns > .campaigns-list > li:first').addClass("ui-first-child");
       $('.campaigns > .campaigns-list > li:last').addClass("ui-last-child");
@@ -181,41 +184,46 @@
 
     populateFromStorage: function () {
       $.mobile.loading("hide");
-      var campaigns = JSON.parse(localStorage.getItem("ekosfera_campaigns"));
-      $.each(campaigns, function (key, value) {
-        var logoURL = (typeof value.users[0].parent == "object") ? value.users[0].parent.user_profile.base64uri : value.users[0].user_profile.base64uri;
-        var date = new Date(value.start_date);
-        var day = date.getDay();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+      var data = JSON.parse(localStorage.getItem("ekosfera_campaigns"));
 
-        html = "<li>";
-        html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
-        html += "<div class='user-logo-outer'>";
-        html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
-        html += "</div>";
-        html += "<div class='campaign-title truncated'>";
-        html += value.name;
-        html += "</div>";
-        html += "<br />";
-        html += "<div class='campaign-date truncated'>";
-        html += day + "/" + month + "/" + year;
-        html += "</div>";
-        html += "</a>";
+      var html = "";
+
+      var by_date = _.groupBy(data, function (campaign) {
+        var campaignDate = campaign["created_at"].split("T")[0],
+          yyyy = parseInt(campaignDate.split("-")[0]),
+          mm = parseInt(campaignDate.split("-")[1]);
+
+        return mm + "/" + yyyy;
+      });
+
+      sortDates(Object.keys(by_date), "DESC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit campaign-list-divider'>";
+        html += numToNameDate(v);
         html += "</li>";
+        _.each(by_date[v], function (value) {
+          var logoURL = (typeof value.users[0].parent == "object") ? value.users[0].parent.user_profile.base64uri : value.users[0].user_profile.base64uri;
+          var date = new Date(value.start_date);
+          var day = date.getDay();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
 
+          html += "<li>";
+          html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
+          html += "<div class='user-logo-outer'>";
+          html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+          html += "</div>";
+          html += "<div class='campaign-title truncated'>";
+          html += value.name;
+          html += "</div>";
+          html += "<br />";
+          html += "<div class='campaign-date truncated'>";
+          html += day + "/" + month + "/" + year;
+          html += "</div>";
+          html += "</a>";
+          html += "</li>";
+
+        });
         $('.campaigns > .campaigns-list').append(html);
-//        $.each($('.campaigns > .campaigns-list > li'), function(i, el){
-//
-//          $(el).css({'opacity':0});
-//
-//          setTimeout(function(){
-//            $(el).animate({
-//              'opacity':1.0
-//            }, 350);
-//          }, 25 + ( i * 25 ));
-//
-//        });
       });
       $('.campaigns > .campaigns-list > li:first').addClass("ui-first-child");
       $('.campaigns > .campaigns-list > li:last').addClass("ui-last-child");

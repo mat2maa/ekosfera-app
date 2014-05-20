@@ -80,6 +80,58 @@
 
         });
 
+      },
+
+      register: function (ajax_url, name, email, password, password_confirmation, callback) {
+        console.log("api/register");
+        console.log("ajax_url: " + ajax_url);
+        console.log("name: " + name);
+        console.log("email: " + email);
+        console.log("password: " + password);
+        console.log("password_confirmation: " + password_confirmation);
+
+        $.ajax({
+
+          type: "POST",
+
+          url: "http://" + host + "/" + ajax_url,
+
+          //data: ajax_data,
+          data: {name: name, email: email, password: password, password_confirmation: password_confirmation},
+
+          success: function (data) {
+            if (typeof callback.onSuccess == 'function') {
+              console.log("api/onSuccess");
+              callback.onSuccess.call(this, data);
+            }
+          },
+
+          error: function (data, status) {
+            if (typeof callback.onError == 'function') {
+              console.log("api/onError");
+              if (data.status == '403') {
+                return callback.onDenied.call(this, data);
+              }
+              callback.onError.call(this, data);
+            }
+          },
+
+          complete: function (data) {
+            if (typeof callback.onComplete == 'function') {
+              console.log("api/onComplete");
+              callback.onComplete.call(this, data);
+            }
+          },
+
+          denied: function (data) {
+            if (typeof callback.onDenied == 'function') {
+              console.log("api/onDenied");
+              callback.onDenied.call(this, data);
+            }
+          }
+
+        });
+
       }
 
     },
@@ -274,6 +326,10 @@
 
       $(document).on("click", ".newSettings-confirm", function() {
         $("#newSettings").popup("close");
+      });
+
+      $(document).on("click", ".registrationSuccessful-confirm", function() {
+        window.location = 'login.html';
       });
     }
 
