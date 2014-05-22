@@ -11,10 +11,16 @@
     },
 
     bindEvents: function () {
-      $('#logout').on('click', function () {
+      $('.logout').on('click', function () {
         Core.auth.logout();
         return false;
       });
+
+      $(document).on('click', '.exit', function (e) {
+        e.preventDefault();
+        $("#exitApp").popup("open");
+      });
+
       $('#clear-cache-link').on("click", function (e) {
         e.preventDefault();
         var r = confirm("Are you sure you want to clear the cache?");

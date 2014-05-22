@@ -39,6 +39,10 @@
       $(document).on("click", ".exitApp-cancel", function() {
         $("#exitApp").popup("close");
       });
+
+      $(document).on("click", ".registrationSuccessful-confirm", function() {
+        window.location = 'login.html';
+      });
     },
 
     authenticate: {

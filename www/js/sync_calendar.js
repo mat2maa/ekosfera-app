@@ -19,9 +19,14 @@
     },
 
     bindEvents: function () {
-      $('#logout').on('click', function () {
+      $('.logout').on('click', function () {
         Core.auth.logout();
         return false;
+      });
+
+      $(document).on('click', '.exit', function (e) {
+        e.preventDefault();
+        $("#exitApp").popup("open");
       });
 
       $(document).on('click', '.sync-btn', function (e) {

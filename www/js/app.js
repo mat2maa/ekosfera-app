@@ -48,6 +48,15 @@ var app = {
   }
 };
 
+$(document).on("pageshow", function() {
+  switchHeaders();
+});
+
+$(document).on( "pagebeforechange", function( e, data ) {
+  console.log( e )
+  console.log( data )
+});
+
 function exitApp() {
   navigator.app.exitApp();
 }
@@ -155,6 +164,22 @@ function sortDates(arr, order) {
 function numToNameDate(str) {
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return months[parseInt(str.split("/")[0] - 1)] + " " + parseInt(str.split("/")[1]);
+}
+
+function switchHeaders() {
+  var activePage = $.mobile.activePage.attr('id'), $header;
+  console.log(activePage);
+
+  if (activePage == 'HomePage') {
+    $header = $('.index-header');
+  } else if (activePage == 'settings') {
+    $header = $('.settings-header');
+  } else {
+    $header = $('.sidebar-header');
+  }
+
+  $('.header-section').removeClass("in").addClass("out");
+  $header.removeClass("out").addClass("in");
 }
 
 function testPlugin() {

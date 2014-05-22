@@ -23,12 +23,17 @@
     },
 
     bindEvents: function () {
-      $('#logout').on('click', function () {
+      $('.logout').on('click', function () {
         Core.auth.logout();
         return false;
       });
 
-      $(document).on("click", ".link-to-news-post", function() {
+      $(document).on('click', '.exit', function (e) {
+        e.preventDefault();
+        $("#exitApp").popup("open");
+      });
+
+      $(document).on("click", ".link-to-news-post", function () {
         var id = $(this).attr('data-id');
         $("body").data("news_post", id);
       });
@@ -119,39 +124,42 @@
       $.mobile.loading("hide");
       console.log(data);
       localStorage.setItem('ekosfera_news_posts', JSON.stringify(data));
+
       var html = "";
-      $.each(data, function (key, value) {
-        var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
 
-        html = "<li>";
-        html += "<a href='show_news_posts.html?id=" + value.id + "' class='link-to-news-post ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
-        html += "<div class='user-logo-outer'>";
-        html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
-        html += "</div>";
-        html += "<div class='news-post-title truncated'>";
-        html += value.title;
-        html += "</div>";
-        html += "<br />";
-        html += "<div class='news-post-short-description truncated'>";
-        html += value.short_description;
-        html += "</div>";
-        html += "</a>";
-        html += "</li>";
+      var by_date = _.groupBy(data, function (news_post) {
+        var newsPostDate = news_post["created_at"].split("T")[0],
+          yyyy = parseInt(newsPostDate.split("-")[0]),
+          mm = parseInt(newsPostDate.split("-")[1]);
 
-        $('.news-posts > .posts-list').append(html);
-//        $.each($('.news-posts > .posts-list > li'), function(i, el){
-//
-//          $(el).css({'opacity':0});
-//
-//          setTimeout(function(){
-//            $(el).animate({
-//              'opacity':1.0
-//            }, 350);
-//          }, 25 + ( i * 25 ));
-//
-//        });
-
+        return mm + "/" + yyyy;
       });
+
+      sortDates(Object.keys(by_date), "DESC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit news-post-list-divider'>";
+        html += numToNameDate(v);
+        html += "</li>";
+        _.each(by_date[v], function (value) {
+          var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
+
+          html += "<li>";
+          html += "<a href='show_news_posts.html?id=" + value.id + "' class='link-to-news-post ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
+          html += "<div class='user-logo-outer'>";
+          html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+          html += "</div>";
+          html += "<div class='news-post-title truncated'>";
+          html += value.title;
+          html += "</div>";
+          html += "<br />";
+          html += "<div class='news-post-short-description truncated'>";
+          html += value.short_description;
+          html += "</div>";
+          html += "</a>";
+          html += "</li>";
+        });
+        $('.news-posts > .posts-list').append(html);
+      });
+
       $('.news-posts > .posts-list > li:first').addClass("ui-first-child");
       $('.news-posts > .posts-list > li:last').addClass("ui-last-child");
     },
@@ -177,37 +185,40 @@
 
     populateFromStorage: function () {
       $.mobile.loading("hide");
-      var news_posts = JSON.parse(localStorage.getItem("ekosfera_news_posts"));
-      $.each(news_posts, function (key, value) {
-        var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
+      var data = JSON.parse(localStorage.getItem("ekosfera_news_posts"));
+      var html = "";
 
-        html = "<li>";
-        html += "<a href='show_news_posts.html?id=" + value.id + "' class='link-to-news-post ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
-        html += "<div class='user-logo-outer'>";
-        html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
-        html += "</div>";
-        html += "<div class='news-post-title truncated'>";
-        html += value.title;
-        html += "</div>";
-        html += "<br />";
-        html += "<div class='news-post-short-description truncated'>";
-        html += value.short_description;
-        html += "</div>";
-        html += "</a>";
+      var by_date = _.groupBy(data, function (news_post) {
+        var newsPostDate = news_post["created_at"].split("T")[0],
+          yyyy = parseInt(newsPostDate.split("-")[0]),
+          mm = parseInt(newsPostDate.split("-")[1]);
+
+        return mm + "/" + yyyy;
+      });
+
+      sortDates(Object.keys(by_date), "DESC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit news-post-list-divider'>";
+        html += numToNameDate(v);
         html += "</li>";
+        _.each(by_date[v], function (value) {
+          var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
 
+          html += "<li>";
+          html += "<a href='show_news_posts.html?id=" + value.id + "' class='link-to-news-post ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
+          html += "<div class='user-logo-outer'>";
+          html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+          html += "</div>";
+          html += "<div class='news-post-title truncated'>";
+          html += value.title;
+          html += "</div>";
+          html += "<br />";
+          html += "<div class='news-post-short-description truncated'>";
+          html += value.short_description;
+          html += "</div>";
+          html += "</a>";
+          html += "</li>";
+        });
         $('.news-posts > .posts-list').append(html);
-//        $.each($('.news-posts > .posts-list > li'), function(i, el){
-//
-//          $(el).css({'opacity':0});
-//
-//          setTimeout(function(){
-//            $(el).animate({
-//              'opacity':1.0
-//            }, 350);
-//          }, 25 + ( i * 25 ));
-//
-//        });
       });
       $('.news-posts > .posts-list > li:first').addClass("ui-first-child");
       $('.news-posts > .posts-list > li:last').addClass("ui-last-child");

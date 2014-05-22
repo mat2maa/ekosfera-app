@@ -29,7 +29,7 @@
 }
 
 [data-role="page"] {
-  padding-top: 43px;
+  padding-top: 46px;
   padding-bottom: 0px;
 }
 
@@ -79,6 +79,8 @@ body {
 
 [data-role="header"] {
   border-bottom: 2px solid #dddddd !important;
+  height: 42px;
+  overflow: hidden;
 }
 
 [data-role="header"]:after {
@@ -90,6 +92,24 @@ body {
   right: 0px;
   bottom: -3px;
   border-bottom: 1px solid #bbbbbb;
+}
+
+.header-section {
+  -webkit-transition: opacity 0.35 0.0 ease, z-index 0.1 0.0 ease;
+  -moz-transition: opacity 0.35 0.0 ease, z-index 0.1 0.0 ease;
+  -ms-transition: opacity 0.35 0.0 ease, z-index 0.1 0.0 ease;
+  -o-transition: opacity 0.35 0.0 ease, z-index 0.1 0.0 ease;
+  transition: opacity 0.35 0.0 ease, z-index 0.1 0.0 ease;
+}
+
+.header-section.in {
+  opacity: 1.0;
+  z-index: 1000;
+}
+
+.header-section.out {
+  opacity: 0.0;
+  z-index: 0;
 }
 
 [data-role="footer"] {
@@ -307,8 +327,16 @@ body {
   border-left: 5px solid #000000 !important;
 }
 
-#logout.ui-btn-right {
+.logout.ui-btn-right {
+  right: 76px;
+}
+
+.exit.ui-btn-right {
   right: 40px;
+}
+
+.logout.ui-btn-left {
+  left: 40px;
 }
 
 .refresh-useful-tip {
@@ -326,9 +354,25 @@ body {
 
 }
 
+.calendar-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #2ea64a !important;
+  color: #2ea64a !important;
+}
 
+.news-post-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #285b8f !important;
+  color: #285b8f !important;
+}
 
-
-
+.campaign-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #e5c700 !important;
+  color: #e5c700 !important;
+}
 
 

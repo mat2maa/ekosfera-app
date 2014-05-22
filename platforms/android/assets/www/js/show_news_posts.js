@@ -23,7 +23,7 @@
     },
 
     bindEvents: function () {
-      $('#logout').on('click', function () {
+      $('.logout').on('click', function () {
         Core.auth.logout();
         return false;
       });

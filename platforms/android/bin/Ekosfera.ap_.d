@@ -58,6 +58,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/login.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/phonegap.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/register.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/res \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/settings.html \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/show_campaigns.html \
@@ -83,6 +84,7 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/loader.gif \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/login.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/photoswipe.css \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/register.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/settings.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/show_campaigns.css \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/css/show_news_posts.css \
@@ -315,12 +317,14 @@
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/jquery.serialize-object.compiled.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/klass.min.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/login.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/register.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/settings.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/show_campaigns.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/show_news_posts.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/show_petitions.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/show_surveys.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/sync_calendar.js \
+/Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/underscore-min.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/js/upload_photo.js \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/com.borismus.webintent \
 /Users/matthewager/Sites/ekosfera/platforms/android/assets/www/plugins/me.apla.cordova.app-preferences \

@@ -4,15 +4,16 @@
   <meta charset="utf-8"/>
   <meta name="format-detection" content="telephone=no"/>
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-  <meta name="viewport"
-        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
   <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css"/>
   <script type="text/javascript" src="js/klass.min.js"></script>
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.4.2.min.js"></script>
   <script src="js/underscore-min.js"></script>
+  <link href="css/photoswipe.css" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css"/>
   <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/code.photoswipe.jquery-3.0.5.js"></script>
   <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -57,19 +58,20 @@
   <title>Екосфера</title>
 </head>
 <body>
+
+<div data-role="header" data-position="fixed" data-tap-toggle="false" data-animate="true" role="banner" data-theme="a" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-bar-a">
+  <h1 class="header-link header-home ui-title" role="heading" aria-level="1"><span class="e">е</span><span class="kosfera">косфера</span></h1>
+</div>
+<!-- /header -->
+
 <div data-role="page" id="login-page"><!-- /page -->
   <link rel="stylesheet" type="text/css" href="css/login.css"/>
-
-  <div data-role="header" data-position="fixed" data-tap-toggle="false" data-animate="true">
-    <h1 class="header-link header-home"><span class="e">е</span><span class="kosfera">косфера</span></h1>
-  </div>
-  <!-- /header -->
 
   <div role="main" class="ui-content" data-animate="true">
     <div class="error-msg"></div>
     <ul data-role="listview">
       <li>
-        <a href="register.html" data-ajax="false" data-transition="none" class="ui-btn ui-icon-user ui-btn-icon-right">
+        <a href="register.html" data-ajax="true" data-transition="pop" class="ui-btn ui-icon-user ui-btn-icon-right">
           Нов корисник? Кликнете тука
         </a>
       </li>

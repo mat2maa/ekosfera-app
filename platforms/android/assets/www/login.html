@@ -5,13 +5,15 @@
   <meta name="format-detection" content="telephone=no"/>
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-  <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css"/>
   <script type="text/javascript" src="js/klass.min.js"></script>
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.4.2.min.js"></script>
   <script src="js/underscore-min.js"></script>
+  <link href="css/photoswipe.css" type="text/css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css"/>
   <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/code.photoswipe.jquery-3.0.5.js"></script>
   <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -19,13 +21,13 @@
 
     // Wait for PhoneGap to connect with the device
     //
-    document.addEventListener("deviceready",onDeviceReady,false);
+    document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is ready to be used!
     //
     function onDeviceReady() {
-      pictureSource=navigator.camera.PictureSourceType;
-      destinationType=navigator.camera.DestinationType;
+      pictureSource = navigator.camera.PictureSourceType;
+      destinationType = navigator.camera.DestinationType;
     }
   </script>
   <script type="text/javascript" src="js/jquery.serialize-object.compiled.js"></script>
@@ -56,70 +58,92 @@
   <title>Екосфера</title>
 </head>
 <body>
+
+<div data-role="header" data-position="fixed" data-tap-toggle="false" data-animate="true" role="banner" data-theme="a" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-bar-a">
+  <h1 class="header-link header-home ui-title" role="heading" aria-level="1"><span class="e">е</span><span class="kosfera">косфера</span></h1>
+</div>
+<!-- /header -->
+
 <div data-role="page" id="login-page"><!-- /page -->
   <link rel="stylesheet" type="text/css" href="css/login.css"/>
 
-  <div data-role="header" data-position="fixed" data-tap-toggle="false" data-animate="true">
-    <h1 class="header-link header-home"><span class="e">е</span><span class="kosfera">косфера</span></h1>
-  </div>
-  <!-- /header -->
-
   <div role="main" class="ui-content" data-animate="true">
     <div class="error-msg"></div>
-    <form accept-charset="UTF-8" action="api/tokens.json" method="post" id="login">
-      <div class='form_errors'></div>
-      <fieldset id='login_form'>
-        <label for="user_email">Имејл:</label>
-        <input type="text" name="user[email]" id="user_email" placeholder="имејл" value="">
-        <label for="user_password">Лозинка:</label>
-        <input type="password" name="user[password]" id="user_password" placeholder="лозинка" value="">
-        <br/>
-        <input id="user_session_submit" name="submit" type="submit" value="Најави ме"/>
-      </fieldset>
-    </form>
+    <ul data-role="listview">
+      <li>
+        <a href="register.html" data-ajax="true" data-transition="pop" class="ui-btn ui-icon-user ui-btn-icon-right">
+          Нов корисник? Кликнете тука
+        </a>
+      </li>
+      <li>
+        <form accept-charset="UTF-8" action="api/tokens.json" method="post" id="login">
+          <div class='form_errors'></div>
+          <fieldset id='login_form'>
+            <label for="user_email">Имејл:</label>
+            <input type="text" name="user[email]" id="user_email" placeholder="имејл" value="">
+            <label for="user_password">Лозинка:</label>
+            <input type="password" name="user[password]" id="user_password" placeholder="лозинка" value="">
+            <br/>
+            <input id="user_session_submit" name="submit" type="submit" value="Најави ме"/>
+          </fieldset>
+        </form>
+      </li>
+    </ul>
   </div>
   <!-- /content -->
 
   <script type="text/javascript" src="js/login.js"></script>
 
   <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="checkConnection-popup">
-    <div data-role="popup" id="checkConnection" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="popup" id="checkConnection" data-overlay-theme="a" data-theme="a" style="max-width:400px;"
+         class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
       <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
         <h1 class="ui-title" role="heading" aria-level="1">Интернет конекција</h1>
       </div>
       <div role="main" class="ui-corner-bottom ui-content">
         <h3 class="ui-title">Немате интернет. Одете во Settings за да овозможите интернет конекција.</h3>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all checkConnection-confirm" role="button" value="Settings">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a"
+               class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all checkConnection-confirm"
+               role="button" value="Settings">
       </div>
     </div>
   </div>
 
 
   <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="openSettings-popup">
-    <div data-role="popup" id="openSettings" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="popup" id="openSettings" data-overlay-theme="a" data-theme="a" style="max-width:400px;"
+         class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
       <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
         <h1 class="ui-title" role="heading" aria-level="1"></h1>
       </div>
       <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">Не се отвора менито Settings, треба да го отворите рачно. Апликацијата сега ќе се затвори.</h3>
+        <h3 class="ui-title">Не се отвора менито Settings, треба да го отворите рачно. Апликацијата сега ќе се
+          затвори.</h3>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all openSettings-confirm" role="button" value="Излез">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a"
+               class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all openSettings-confirm" role="button"
+               value="Излез">
       </div>
     </div>
   </div>
 
 
   <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="exitApp-popup">
-    <div data-role="popup" id="exitApp" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="popup" id="exitApp" data-overlay-theme="a" data-theme="a" style="max-width:400px;"
+         class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
       <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
         <h1 class="ui-title" role="heading" aria-level="1">Излези од Екосфера:</h1>
       </div>
       <div role="main" class="ui-corner-bottom ui-content">
         <h3 class="ui-title">Сигурни сте дека сакате да ја затворите програмата?</h3>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all exitApp-cancel" role="button" value="Откажи">
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" class="ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all exitApp-confirm" role="button" value="Излез">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a"
+               class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all exitApp-cancel" role="button"
+               value="Откажи">
+        <input type="button" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b"
+               class="ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all exitApp-confirm" role="button"
+               value="Излез">
       </div>
     </div>
   </div>

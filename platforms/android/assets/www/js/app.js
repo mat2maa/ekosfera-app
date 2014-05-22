@@ -48,6 +48,15 @@ var app = {
   }
 };
 
+$(document).on("pageshow", function() {
+  switchHeaders();
+});
+
+$(document).on( "pagebeforechange", function( e, data ) {
+  console.log( e )
+  console.log( data )
+});
+
 function exitApp() {
   navigator.app.exitApp();
 }
@@ -56,14 +65,14 @@ function checkConnection() {
   var networkState = navigator.connection.type;
 
   var states = {};
-  states[Connection.UNKNOWN]  = 'Unknown connection';
+  states[Connection.UNKNOWN] = 'Unknown connection';
   states[Connection.ETHERNET] = 'Ethernet connection';
-  states[Connection.WIFI]     = 'WiFi connection';
-  states[Connection.CELL_2G]  = 'Cell 2G connection';
-  states[Connection.CELL_3G]  = 'Cell 3G connection';
-  states[Connection.CELL_4G]  = 'Cell 4G connection';
-  states[Connection.CELL]     = 'Cell generic connection';
-  states[Connection.NONE]     = 'No network connection';
+  states[Connection.WIFI] = 'WiFi connection';
+  states[Connection.CELL_2G] = 'Cell 2G connection';
+  states[Connection.CELL_3G] = 'Cell 3G connection';
+  states[Connection.CELL_4G] = 'Cell 4G connection';
+  states[Connection.CELL] = 'Cell generic connection';
+  states[Connection.NONE] = 'No network connection';
 
   if (states[networkState] == 'Unknown connection' || states[networkState] == 'Cell generic connection' || states[networkState] == 'No network connection') {
     $("#checkConnection").popup("open");
@@ -121,6 +130,56 @@ function onBackKeyDown(e) {
   } catch (e) {
     console.log('Exception: ' + e, 3);
   }
+}
+
+function sortDates(arr, order) {
+  // Set up our variables, 2 date objects and a map of month names/numbers
+  var ad = new Date(),
+    bd = new Date();
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  arr.sort(function (a, b) {
+    // Split the text into [ date, month ]
+    var as = a.split('/'),
+      bs = b.split('/');
+
+    // Set the Date() objects to the dates of the items
+    ad.setMonth(as[0]);
+    ad.setYear(as[1]);
+    bd.setMonth(bs[0]);
+    bd.setYear(bs[1]);
+
+    /* A math operation converts a Date object to a number, so
+     it's enough to just return date1 - date2 */
+    if (order == "ASC")
+      return ad - bd;
+    else {
+      return bd - ad;
+    }
+  });
+
+  return arr;
+}
+
+function numToNameDate(str) {
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  return months[parseInt(str.split("/")[0] - 1)] + " " + parseInt(str.split("/")[1]);
+}
+
+function switchHeaders() {
+  var activePage = $.mobile.activePage.attr('id'), $header;
+  console.log(activePage);
+
+  if (activePage == 'HomePage') {
+    $header = $('.index-header');
+  } else if (activePage == 'settings') {
+    $header = $('.settings-header');
+  } else {
+    $header = $('.sidebar-header');
+  }
+
+  $('.header-section').removeClass("in").addClass("out");
+  $header.removeClass("out").addClass("in");
 }
 
 function testPlugin() {
