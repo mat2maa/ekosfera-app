@@ -50,12 +50,45 @@ var app = {
 
 $(document).on("pageshow", function() {
   switchHeaders();
+  Core.footerInit();
 });
 
-$(document).on( "pagebeforechange", function( e, data ) {
-  console.log( e )
-  console.log( data )
-});
+//$(document).on( "pagebeforecreate", function( e, data ) {
+//  console.log("pagebeforecreate");
+//});
+//
+//$(document).on( "pagecreate", function( e, data ) {
+//  console.log("pagecreate");
+//});
+//
+//$(document).on( "pageinit", function( e, data ) {
+//  console.log("pageinit");
+//});
+//
+//$(document).on( "pagebeforehide", function( e, data ) {
+//  console.log("pagebeforehide");
+//});
+//
+//$(document).on( "pagebeforeshow", function( e, data ) {
+//  console.log("pagebeforeshow");
+//});
+//
+//$(document).on( "pageremove", function( e, data ) {
+//  console.log("pageremove");
+//});
+//
+//$(document).on( "pagehide", function( e, data ) {
+//  console.log("pagehide");
+//});
+//
+//$(document).on( "pageshow", function( e, data ) {
+//  console.log("pageshow");
+//});
+//
+//$(document).on( "pagebeforechange", function( e, data ) {
+//  console.log(e);
+//  console.log(data);
+//});
 
 function exitApp() {
   navigator.app.exitApp();

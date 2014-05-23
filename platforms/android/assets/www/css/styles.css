@@ -354,13 +354,6 @@ body {
 
 }
 
-.calendar-list-divider {
-  text-shadow: #FAFAFA 1px 1px 0 !important;
-  border-bottom: 1px solid #DDDDDD !important;
-  border-top: 4px solid #2ea64a !important;
-  color: #2ea64a !important;
-}
-
 .news-post-list-divider {
   text-shadow: #FAFAFA 1px 1px 0 !important;
   border-bottom: 1px solid #DDDDDD !important;
@@ -375,4 +368,31 @@ body {
   color: #e5c700 !important;
 }
 
+.petition-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #bfa600 !important;
+  color: #bfa600 !important;
+}
+
+.survey-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #7f6e00 !important;
+  color: #7f6e00 !important;
+}
+
+.video-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #9c6b5a !important;
+  color: #9c6b5a !important;
+}
+
+.calendar-list-divider {
+  text-shadow: #FAFAFA 1px 1px 0 !important;
+  border-bottom: 1px solid #DDDDDD !important;
+  border-top: 4px solid #2ea64a !important;
+  color: #2ea64a !important;
+}
 

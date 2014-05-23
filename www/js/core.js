@@ -17,9 +17,12 @@
           }
         );
 
-        Core.populateSettingsMenu();
-        Core.footerInit();
         Core.bindEvents();
+
+        $("#checkConnection").enhanceWithin().popup();
+        $("#openSettings").enhanceWithin().popup();
+        $("#exitApp").enhanceWithin().popup();
+        $("#registrationSuccessful").enhanceWithin().popup();
       }
 
     },
@@ -280,11 +283,12 @@
 
       var footer = "",
         settings = JSON.parse(localStorage.getItem("ekosfera_settings")),
-        tip = JSON.parse(localStorage.getItem("ekosfera_useful_tip"));
+        tip = JSON.parse(localStorage.getItem("ekosfera_useful_tip")),
+        activePage = $.mobile.activePage.attr('id');
 
-      if (settings["tipsOn"] == true && tip != null) {
+      if (settings["tipsOn"] == true && tip != null && activePage != "upload-photo") {
         footer += "<div data-role='footer' data-position='fixed' data-tap-toggle='false' data-animate='true' role='contentinfo' data-theme='a' class='ui-footer ui-bar-inherit ui-footer-fixed slideup ui-bar-a'>";
-        footer += "<h4 class='useful-tip' role='heading' aria-level='1'>" + tip.useful_tip_category.name + "</h4>";
+        footer += "<h4 class='useful-tip useful-tip-" + tip.useful_tip_category.id + "' role='heading' aria-level='1'>Еко совети за " + tip.useful_tip_category.name.toLowerCase() + "</h4>";
         footer += "<hr/>";
         footer += "<p class='useful-tip'>" + tip.text + "</p>";
         footer += "<a href='#' class='ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-notext ui-corner-all refresh-useful-tip' data-ajax='false' data-transition='none' data-role='button' role='button'>Refresh Useful Tip</a>";
@@ -307,30 +311,41 @@
         Core.usefulTips.refreshUsefulTip();
       });
 
-      $(document).on("click", ".checkConnection-confirm", function() {
+      $(document).on("click", ".checkConnection-confirm", function () {
         openSettings();
         $("#checkConnection").popup("close");
       });
 
-      $(document).on("click", ".openSettings-confirm", function() {
+      $(document).on("click", ".openSettings-confirm", function () {
         exitApp();
       });
 
-      $(document).on("click", ".exitApp-confirm", function() {
+      $(document).on("click", ".exitApp-confirm", function () {
         exitApp();
       });
 
-      $(document).on("click", ".exitApp-cancel", function() {
+      $(document).on("click", ".exitApp-cancel", function () {
         $("#exitApp").popup("close");
       });
 
-      $(document).on("click", ".newSettings-confirm", function() {
+      $(document).on("click", ".newSettings-confirm", function () {
         $("#newSettings").popup("close");
       });
 
-      $(document).on("click", ".registrationSuccessful-confirm", function() {
+      $(document).on("click", ".registrationSuccessful-confirm", function () {
         window.location = 'login.html';
       });
+
+      $(document).on('click', '.logout', function (e) {
+        Core.auth.logout();
+        return false;
+      });
+
+      $(document).on('click', '.exit', function (e) {
+        $("#exitApp").popup("open");
+        return false;
+      });
+
     }
 
   };

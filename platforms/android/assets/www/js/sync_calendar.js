@@ -19,15 +19,6 @@
     },
 
     bindEvents: function () {
-      $('.logout').on('click', function () {
-        Core.auth.logout();
-        return false;
-      });
-
-      $(document).on('click', '.exit', function (e) {
-        e.preventDefault();
-        $("#exitApp").popup("open");
-      });
 
       $(document).on('click', '.sync-btn', function (e) {
         $.mobile.loading("show");
@@ -140,7 +131,6 @@
       console.log(data);
 
       var html = "";
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       var settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
 
       var by_date = _.groupBy(data, function (event) {
@@ -161,6 +151,12 @@
           var location = "Ekosfera";
           var notes = value.short_description;
           var text = strip_tags(value.article, '<i><b><br><p>');
+          var startDate = new Date(year, month - 1, day, 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
+          var today = new Date();
+
+          if (settings["syncCalendar"] == 3 && startDate < today) {
+            $(".calendar-list-divider").hide();
+          }
 
           if (settings["syncCalendar"] == 1) {
             html += "<li>";
@@ -183,8 +179,6 @@
             html += "</a>";
             html += "</li>";
           } else if (settings["syncCalendar"] == 3) {
-            var startDate = new Date(year, month - 1, day, 0, 0, 0, 0, 0); // beware: month 0 = january, 11 = december
-            var today = new Date();
 
             if (startDate >= today) {
               html += "<li>";

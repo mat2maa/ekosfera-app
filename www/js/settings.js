@@ -11,15 +11,6 @@
     },
 
     bindEvents: function () {
-      $('.logout').on('click', function () {
-        Core.auth.logout();
-        return false;
-      });
-
-      $(document).on('click', '.exit', function (e) {
-        e.preventDefault();
-        $("#exitApp").popup("open");
-      });
 
       $('#clear-cache-link').on("click", function (e) {
         e.preventDefault();
@@ -46,6 +37,7 @@
         $sync3 = $('#sync-calendar-3');
 
       $showTips.on("click", function () {
+        settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
         if ($(this).prop("checked") == false) {
           $tipsOptions.each(function (index) {
             $(this).checkboxradio("option", "disabled", true).checkboxradio("refresh");
@@ -72,6 +64,7 @@
       });
 
       $tipsOptions.each(function (index) {
+        settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
         $(this).on("click", function() {
           if ($(this).prop("checked") == false) {
             settings[index] = false;
@@ -95,18 +88,24 @@
       });
 
       $sync1.on("click", function() {
+        settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
         settings["syncCalendar"] = 1;
         localStorage.setItem("ekosfera_settings", JSON.stringify(settings));
+        $(".ui-page").not(".ui-page-active").remove();
       });
 
       $sync2.on("click", function() {
+        settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
         settings["syncCalendar"] = 2;
         localStorage.setItem("ekosfera_settings", JSON.stringify(settings));
+        $(".ui-page").not(".ui-page-active").remove();
       });
 
       $sync3.on("click", function() {
+        settings = JSON.parse(localStorage.getItem("ekosfera_settings"));
         settings["syncCalendar"] = 3;
         localStorage.setItem("ekosfera_settings", JSON.stringify(settings));
+        $(".ui-page").not(".ui-page-active").remove();
       });
     }
   };

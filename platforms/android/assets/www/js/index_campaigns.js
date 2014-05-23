@@ -23,15 +23,6 @@
     },
 
     bindEvents: function () {
-      $('.logout').on('click', function () {
-        Core.auth.logout();
-        return false;
-      });
-
-      $(document).on('click', '.exit', function (e) {
-        e.preventDefault();
-        $("#exitApp").popup("open");
-      });
 
       $(document).on("click", ".link-to-campaign", function () {
         var id = $(this).attr('data-id');
@@ -147,7 +138,7 @@
           var year = date.getFullYear();
 
           html += "<li>";
-          html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
+          html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='fade' data-id='" + value.id + "'>";
           html += "<div class='user-logo-outer'>";
           html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
           html += "</div>";
@@ -213,7 +204,7 @@
           var year = date.getFullYear();
 
           html += "<li>";
-          html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='pop' data-id='" + value.id + "'>";
+          html += "<a href='show_campaigns.html?id=" + value.id + "' class='link-to-campaign ui-btn ui-btn-icon-right ui-icon-carat-r' data-ajax='true' data-transition='fade' data-id='" + value.id + "'>";
           html += "<div class='user-logo-outer'>";
           html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
           html += "</div>";

@@ -19,15 +19,6 @@
     },
 
     bindEvents: function () {
-      $('.logout').on('click', function () {
-        Core.auth.logout();
-        return false;
-      });
-
-      $(document).on('click', '.exit', function (e) {
-        e.preventDefault();
-        $("#exitApp").popup("open");
-      });
 
       $(document).on("click", ".vote-for-photo", function (e) {
         e.preventDefault();
@@ -82,7 +73,7 @@
         html += "<tbody>";
         html += "<tr>";
         html += "<td>";
-        html += "Нема слики. Бидете прв/а што ќе <a href='upload_photo.html' data-ajax='true' data-transition='pop' class='upload-photo-link'>објави</a>!";
+        html += "Нема слики. Бидете прв/а што ќе <a href='upload_photo.html' data-ajax='true' data-transition='fade' class='upload-photo-link'>објави</a>!";
         html += "</td>";
         html += "</tr>";
         html += "</tbody>";

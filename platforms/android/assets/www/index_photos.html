@@ -63,7 +63,7 @@
 <div data-role="header" data-position="fixed" data-tap-toggle="false" data-animate="true" role="banner" data-theme="a" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-bar-a">
   <div class=" header-section index-header in">
     <h1 class="header-link header-home ui-title" role="heading" aria-level="1"><span class="e">е</span><span class="kosfera">косфера</span></h1>
-    <a href="settings.html" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-ajax="true" data-transition="pop" data-role="button" role="button">Settings</a>
+    <a href="settings.html" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-ajax="true" data-transition="fade" data-role="button" role="button">Settings</a>
     <a href="#" class="logout ui-btn-left ui-btn ui-icon-lock ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none" data-role="button" role="button">Logout</a>
     <a href="#" class="exit ui-btn-left ui-btn ui-icon-power ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none" data-role="button" role="button">Logout</a>
   </div>
@@ -71,14 +71,14 @@
   <div class="header-section sidebar-header out">
     <h1 class="ui-title" role="heading" aria-level="1">&nbsp;</h1><!--Non-floating div-->
     <a href="#menu" data-icon="bars" class="header-link header-link-bars header-link-left ui-link ui-btn-left ui-btn ui-btn-a ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all" data-theme="a" data-role="button" role="button"><span class="e">е</span><span class="kosfera">косфера</span></a>
-    <a href="settings.html" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-ajax="true" data-transition="pop" data-role="button" role="button">Settings</a>
+    <a href="settings.html" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-ajax="true" data-transition="fade" data-role="button" role="button">Settings</a>
     <a href="#" class="logout ui-btn-right ui-btn ui-icon-lock ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none" data-role="button" role="button">Logout</a>
     <a href="#" class="exit ui-btn-right ui-btn ui-icon-power ui-btn-icon-notext ui-corner-all" data-ajax="false" data-transition="none" data-role="button" role="button">Exit</a>
   </div>
 
   <div class="header-section settings-header out">
     <h1 class="ui-title" role="heading" aria-level="1">&nbsp;</h1><!--Non-floating div-->
-    <a href="index.html" data-icon="bars" class="header-link header-link-bars header-link-left ui-link ui-btn-left ui-btn ui-btn-a ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all" data-theme="a" data-ajax="true" data-transition="pop" data-direction="reverse" data-role="button" role="button"><span class="e">е</span><span class="kosfera">косфера</span></a>
+    <a href="index.html" data-icon="bars" class="header-link header-link-bars header-link-left ui-link ui-btn-left ui-btn ui-btn-a ui-icon-bars ui-btn-icon-left ui-shadow ui-corner-all" data-theme="a" data-ajax="true" data-transition="fade" data-direction="reverse" data-role="button" role="button"><span class="e">е</span><span class="kosfera">косфера</span></a>
   </div>
 </div>
 <!-- /header -->
@@ -89,15 +89,15 @@
   <div data-role="panel" id="menu" data-display="overlay" data-theme="a" data-position-fixed="true">
     <ul data-role="listview">
       <li class="list-header">Најново од ekosfera.mk</li>
-      <li><a href="index_news_posts.html" data-ajax="true" data-transition="pop" class="news-post-link">ВЕСТИ</a></li>
-      <li><a href="index_campaigns.html" data-ajax="true" data-transition="pop" class="campaign-link">КАМПАЊИ</a></li>
-      <li><a href="index_petitions.html" data-ajax="true" data-transition="pop" class="petition-link">ПЕТИЦИИ</a></li>
-      <li><a href="index_surveys.html" data-ajax="true" data-transition="pop" class="survey-link">АНКЕТИ</a></li>
-      <li><a href="index_videos.html" data-ajax="true" data-transition="pop" class="video-link">ВИДЕА</a></li>
-      <li><a href="index_photos.html" data-ajax="true" data-transition="pop" class="photo-link">СЛИКИ</a></li>
-      <li><a href="sync_calendar.html" data-ajax="true" data-transition="pop" class="sync-calendar-link">КАЛЕНДАР</a></li>
+      <li><a href="index_news_posts.html" data-ajax="true" data-transition="fade" class="news-post-link">ВЕСТИ</a></li>
+      <li><a href="index_campaigns.html" data-ajax="true" data-transition="fade" class="campaign-link">КАМПАЊИ</a></li>
+      <li><a href="index_petitions.html" data-ajax="true" data-transition="fade" class="petition-link">ПЕТИЦИИ</a></li>
+      <li><a href="index_surveys.html" data-ajax="true" data-transition="fade" class="survey-link">АНКЕТИ</a></li>
+      <li><a href="index_videos.html" data-ajax="true" data-transition="fade" class="video-link">ВИДЕА</a></li>
+      <li><a href="index_photos.html" data-ajax="true" data-transition="fade" class="photo-link">СЛИКИ</a></li>
+      <li><a href="sync_calendar.html" data-ajax="true" data-transition="fade" class="sync-calendar-link">КАЛЕНДАР</a></li>
       <li class="list-header">Алатки</li>
-      <li><a href="upload_photo.html" data-ajax="true" data-transition="pop" class="upload-photo-link">ПРИЈАВИ ЕКОЛОШКИ ПРОБЛЕМ</a></li>
+      <li><a href="upload_photo.html" data-ajax="true" data-transition="fade" class="upload-photo-link">ПРИЈАВИ ЕКОЛОШКИ ПРОБЛЕМ</a></li>
     </ul>
   </div>
   <!-- /panel -->
@@ -112,45 +112,59 @@
 
   <script type="text/javascript" src="js/index_photos.js"></script>
 
-  <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="checkConnection-popup">
-    <div data-role="popup" id="checkConnection" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
-      <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
-        <h1 class="ui-title" role="heading" aria-level="1">Интернет конекција</h1>
-      </div>
-      <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">Немате интернет. Одете во Settings за да овозможите интернет конекција.</h3>
+</div>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all checkConnection-confirm" role="button" value="Settings">
-      </div>
+<div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="checkConnection-popup">
+  <div data-role="popup" id="checkConnection" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+      <h1 class="ui-title" role="heading" aria-level="1">Интернет конекција</h1>
+    </div>
+    <div role="main" class="ui-corner-bottom ui-content">
+      <h3 class="ui-title">Немате интернет. Одете во Settings за да овозможите интернет конекција.</h3>
+
+      <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all checkConnection-confirm" role="button" value="Settings">
     </div>
   </div>
+</div>
 
 
-  <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="openSettings-popup">
-    <div data-role="popup" id="openSettings" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
-      <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
-        <h1 class="ui-title" role="heading" aria-level="1"></h1>
-      </div>
-      <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">Не се отвора менито Settings, треба да го отворите рачно. Апликацијата сега ќе се затвори.</h3>
+<div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="openSettings-popup">
+  <div data-role="popup" id="openSettings" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+      <h1 class="ui-title" role="heading" aria-level="1"></h1>
+    </div>
+    <div role="main" class="ui-corner-bottom ui-content">
+      <h3 class="ui-title">Не се отвора менито Settings, треба да го отворите рачно. Апликацијата сега ќе се затвори.</h3>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all openSettings-confirm" role="button" value="Излез">
-      </div>
+      <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all openSettings-confirm" role="button" value="Излез">
     </div>
   </div>
+</div>
 
+<div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="exitApp-popup">
+  <div data-role="popup" id="exitApp" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+      <h1 class="ui-title" role="heading" aria-level="1">Излези од Екосфера:</h1>
+    </div>
+    <div role="main" class="ui-corner-bottom ui-content">
+      <h3 class="ui-title">Сигурни сте дека сакате да ја затворите програмата?</h3>
 
-  <div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="exitApp-popup">
-    <div data-role="popup" id="exitApp" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
-      <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
-        <h1 class="ui-title" role="heading" aria-level="1">Излези од Екосфера:</h1>
-      </div>
-      <div role="main" class="ui-corner-bottom ui-content">
-        <h3 class="ui-title">Сигурни сте дека сакате да ја затворите програмата?</h3>
+      <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all exitApp-cancel" role="button" value="Откажи">
+      <input type="button" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" class="ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all exitApp-confirm" role="button" value="Излез">
+    </div>
+  </div>
+</div>
 
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all exitApp-cancel" role="button" value="Откажи">
-        <input type="button" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" class="ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all exitApp-confirm" role="button" value="Излез">
-      </div>
+<div class="ui-popup-container pop ui-popup-hidden ui-popup-truncate" id="registrationSuccessful-popup">
+  <div data-role="popup" id="registrationSuccessful" data-overlay-theme="a" data-theme="a" style="max-width:400px;"
+       class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+    <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+      <h1 class="ui-title" role="heading" aria-level="1">Регистрација</h1>
+    </div>
+    <div role="main" class="ui-corner-bottom ui-content">
+      <h3 class="ui-title">Успешна регистрација. Сега ќе бидете упатен/а кон страницата за најава.</h3>
+
+      <input type="button" data-role="button" data-inline="true" data-rel="back" data-theme="a" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all registrationSuccessful-confirm" role="button" value="OK">
     </div>
   </div>
 </div>

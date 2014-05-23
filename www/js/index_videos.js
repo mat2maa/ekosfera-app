@@ -23,21 +23,12 @@
     },
 
     bindEvents: function () {
-      $('.logout').on('click', function () {
-        Core.auth.logout();
-        return false;
-      });
 
-      $(document).on('click', '.exit', function (e) {
-        e.preventDefault();
-        $("#exitApp").popup("open");
-      });
-
-      $(document).on("click", ".external-link", function(e) {
+      $(document).on("click", ".external-link", function (e) {
         e.preventDefault();
         $(this).blur();
         var url = $(this).attr("href");
-        navigator.app.loadUrl(url, { openExternal:true });
+        navigator.app.loadUrl(url, { openExternal: true });
         return false;
       });
     },
@@ -127,38 +118,41 @@
       $.mobile.loading("hide");
       console.log(data);
       localStorage.setItem('ekosfera_videos', JSON.stringify(data));
+
       var html = "";
-      $.each(data, function (key, value) {
-        var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
 
-        html = "<li>";
-        html += "<a href='" + value.url + "' class='link-to-video ui-btn ui-btn-icon-right ui-icon-video external-link' data-rel='external' target='_blank' data-ajax='false' data-transition='none' data-id='" + value.id + "'>";
-        html += "<div class='user-logo-outer'>";
-        html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
-        html += "</div>";
-        html += "<div class='video-title truncated'>";
-        html += value.title;
-        html += "</div>";
-        html += "<br />";
-        html += "<div class='video-short-description truncated'>";
-        html += value.short_description;
-        html += "</div>";
-        html += "</a>";
+      var by_date = _.groupBy(data, function (video) {
+        var videoDate = video["created_at"].split("T")[0],
+          yyyy = parseInt(videoDate.split("-")[0]),
+          mm = parseInt(videoDate.split("-")[1]);
+
+        return mm + "/" + yyyy;
+      });
+
+      sortDates(Object.keys(by_date), "DESC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit video-list-divider'>";
+        html += numToNameDate(v);
         html += "</li>";
+        _.each(by_date[v], function (value) {
+          var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
 
+          html += "<li>";
+          html += "<a href='" + value.url + "' class='link-to-video ui-btn ui-btn-icon-right ui-icon-video external-link' data-rel='external' target='_blank' data-ajax='false' data-transition='none' data-id='" + value.id + "'>";
+          html += "<div class='user-logo-outer'>";
+          html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+          html += "</div>";
+          html += "<div class='video-title truncated'>";
+          html += value.title;
+          html += "</div>";
+          html += "<br />";
+          html += "<div class='video-short-description truncated'>";
+          html += value.short_description;
+          html += "</div>";
+          html += "</a>";
+          html += "</li>";
+
+        });
         $('.videos > .videos-list').append(html);
-//        $.each($('.videos > .videos-list > li'), function(i, el){
-//
-//          $(el).css({'opacity':0});
-//
-//          setTimeout(function(){
-//            $(el).animate({
-//              'opacity':1.0
-//            }, 350);
-//          }, 25 + ( i * 25 ));
-//
-//        });
-
       });
       $('.videos > .videos-list > li:first').addClass("ui-first-child");
       $('.videos > .videos-list > li:last').addClass("ui-last-child");
@@ -185,37 +179,42 @@
 
     populateFromStorage: function () {
       $.mobile.loading("hide");
-      var videos = JSON.parse(localStorage.getItem("ekosfera_videos"));
-      $.each(videos, function (key, value) {
-        var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
+      var data = JSON.parse(localStorage.getItem("ekosfera_videos"));
 
-        html = "<li>";
-        html += "<a href='" + value.url + "' class='link-to-video ui-btn ui-btn-icon-right ui-icon-video external-link' data-rel='external' target='_blank' data-ajax='false' data-transition='none' data-id='" + value.id + "'>";
-        html += "<div class='user-logo-outer'>";
-        html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
-        html += "</div>";
-        html += "<div class='video-title truncated'>";
-        html += value.title;
-        html += "</div>";
-        html += "<br />";
-        html += "<div class='video-short-description truncated'>";
-        html += value.short_description;
-        html += "</div>";
-        html += "</a>";
+      var html = "";
+
+      var by_date = _.groupBy(data, function (video) {
+        var videoDate = video["created_at"].split("T")[0],
+          yyyy = parseInt(videoDate.split("-")[0]),
+          mm = parseInt(videoDate.split("-")[1]);
+
+        return mm + "/" + yyyy;
+      });
+
+      sortDates(Object.keys(by_date), "DESC").forEach(function (v, i) {
+        html = "<li data-role='list-divider' role='heading' class='ui-li-divider ui-bar-inherit video-list-divider'>";
+        html += numToNameDate(v);
         html += "</li>";
+        _.each(by_date[v], function (value) {
+          var logoURL = (typeof value.user.parent == "object") ? value.user.parent.user_profile.base64uri : value.user.user_profile.base64uri;
 
+          html += "<li>";
+          html += "<a href='" + value.url + "' class='link-to-video ui-btn ui-btn-icon-right ui-icon-video external-link' data-rel='external' target='_blank' data-ajax='false' data-transition='none' data-id='" + value.id + "'>";
+          html += "<div class='user-logo-outer'>";
+          html += "<img src='data:image/png;base64," + logoURL + "' class='user-logo'>";
+          html += "</div>";
+          html += "<div class='video-title truncated'>";
+          html += value.title;
+          html += "</div>";
+          html += "<br />";
+          html += "<div class='video-short-description truncated'>";
+          html += value.short_description;
+          html += "</div>";
+          html += "</a>";
+          html += "</li>";
+
+        });
         $('.videos > .videos-list').append(html);
-//        $.each($('.videos > .videos-list > li'), function(i, el){
-//
-//          $(el).css({'opacity':0});
-//
-//          setTimeout(function(){
-//            $(el).animate({
-//              'opacity':1.0
-//            }, 350);
-//          }, 25 + ( i * 25 ));
-//
-//        });
       });
       $('.videos > .videos-list > li:first').addClass("ui-first-child");
       $('.videos > .videos-list > li:last').addClass("ui-last-child");

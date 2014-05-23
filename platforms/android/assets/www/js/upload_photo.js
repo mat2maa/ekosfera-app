@@ -11,15 +11,6 @@
     },
 
     bindEvents: function () {
-      $('.logout').on('click', function () {
-        Core.auth.logout();
-        return false;
-      });
-
-      $(document).on('click', '.exit', function (e) {
-        e.preventDefault();
-        $("#exitApp").popup("open");
-      });
 
       $('#upload_photo').bind('click', function () {
         Core.upload.photo.getURI(pictureSource.PHOTOLIBRARY);
