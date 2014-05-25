@@ -286,10 +286,9 @@
         tip = JSON.parse(localStorage.getItem("ekosfera_useful_tip")),
         activePage = $.mobile.activePage.attr('id');
 
-      if (settings["tipsOn"] == true && tip != null && activePage != "upload-photo") {
-        footer += "<div data-role='footer' data-position='fixed' data-tap-toggle='false' data-animate='true' role='contentinfo' data-theme='a' class='ui-footer ui-bar-inherit ui-footer-fixed slideup ui-bar-a'>";
+      if (settings != null && settings["tipsOn"] == true && tip != null && activePage != "upload-photo" && activePage != "login-page" && activePage != "register-page") {
+        footer += "<div data-role='footer' data-position='fixed' data-tap-toggle='false' data-animate='true' role='contentinfo' data-theme='b' class='ui-footer ui-bar-inherit ui-footer-fixed slideup ui-bar-b'>";
         footer += "<h4 class='useful-tip useful-tip-" + tip.useful_tip_category.id + "' role='heading' aria-level='1'>Еко совети за " + tip.useful_tip_category.name.toLowerCase() + "</h4>";
-        footer += "<hr/>";
         footer += "<p class='useful-tip'>" + tip.text + "</p>";
         footer += "<a href='#' class='ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-notext ui-corner-all refresh-useful-tip' data-ajax='false' data-transition='none' data-role='button' role='button'>Refresh Useful Tip</a>";
         footer += "</div>";
