@@ -345,6 +345,13 @@
         return false;
       });
 
+      $(document).on("click", ".calendar-text-toggle", function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        $('.calendar-text-outer').not('.calendar-text-outer[data-id="' + id + '"]').slideUp("fast");
+        $('.calendar-text-outer[data-id="' + id + '"]').slideToggle("fast");
+      });
+
     }
 
   };

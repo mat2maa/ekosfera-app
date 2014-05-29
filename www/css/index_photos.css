@@ -32,3 +32,10 @@
   width: 50%;
   vertical-align: top;
 }
+
+.ui-listview>li .image-table p {
+  text-overflow: initial;
+  overflow: initial;
+  white-space: initial;
+}
+

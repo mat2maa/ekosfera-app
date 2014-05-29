@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ager.ekosfera" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.ager.ekosfera" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Екосфера</name>
     <description>
         News, campaigns, surveys, petitions, videos all from ekosfera.mk as well as the ability to upload photographs and sync your calendar.

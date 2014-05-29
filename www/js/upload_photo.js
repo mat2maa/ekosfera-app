@@ -39,27 +39,33 @@
 
       get: function (source) {
         navigator.camera.getPicture(Core.upload.photo.onSuccess, Core.upload.photo.onFail, {
-            quality: 50,
+            quality: 100,
+            targetWidth: 480,
+            targetHeight: 800,
             destinationType: destinationType.FILE_URI,
             sourceType: source,
-            correctOrientation: true
+            correctOrientation: false
           }
         );
       },
 
       getURI: function (source) {
         navigator.camera.getPicture(Core.upload.photo.onURISuccess, Core.upload.photo.onFail, {
-            quality: 50,
+            quality: 100,
+            targetWidth: 480,
+            targetHeight: 800,
             destinationType: destinationType.FILE_URI,
             sourceType: source,
-            correctOrientation: true
+            correctOrientation: false
           }
         );
       },
 
       capture: function capturePhoto() {
         navigator.camera.getPicture(Core.upload.photo.onDataSuccess, Core.upload.photo.onFail, {
-            quality: 50,
+            quality: 100,
+            targetWidth: 480,
+            targetHeight: 800,
             correctOrientation: true
           }
         );

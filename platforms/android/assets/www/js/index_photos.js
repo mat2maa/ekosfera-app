@@ -93,8 +93,8 @@
             html += "<tbody>";
             html += "<tr>";
             html += "<td>";
-            html += "<a href='http://" + host + "" + value.image.mobile.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-container'>";
-            html += "<img src='http://" + host + "" + value.image.thumb.url + "' title='" + value.caption + "' alt='" + value.caption + "' data-id='" + value.id + "' class='photo'>";
+            html += "<a href='http://" + host + "" + value.image.url + "' title='" + value.caption + "' rel='" + value.caption + "' class='photo-container'>";
+            html += "<img src='http://" + host + "" + value.image.url + "' title='" + value.caption + "' alt='" + value.caption + "' data-id='" + value.id + "' class='photo'>";
             html += "</td>";
             html += "<td>";
             html += "<a href='#' class='vote-for-photo ui-btn ui-btn-icon-right ui-icon-star' data-id='" + value.id + "'>Гласај</a>";

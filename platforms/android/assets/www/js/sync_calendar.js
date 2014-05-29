@@ -89,7 +89,6 @@
           }
         });
       });
-
     },
 
     getCalendarEvents: function (callback) {
@@ -158,39 +157,59 @@
             $(".calendar-list-divider").hide();
           }
 
+          var arrowClass = '';
+          if (text != '') {
+            arrowClass = 'ui-icon-arrow-d ui-btn-icon-right';
+          }
+
           if (settings["syncCalendar"] == 1) {
-            html += "<li>";
-            html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
+            html += "<li class='ui-li-has-alt ui-first-child'>";
+            html += "<a href='#' class='ui-btn calendar-text-toggle " + arrowClass + "' data-id='" + value.id + "'>";
             html += "<div class='calendar-event truncated'>";
             html += "<h4>" + title + "</h4>";
             html += "<p>" + notes + "</p>";
             html += "</div>";
-            html += "<p class='calendar-text'>" + text + "</p>";
+            html += "</a>";
+            html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
             html += "</a>";
             html += "</li>";
+            if (text != '') {
+              html += "<div class='calendar-text-outer' data-id='" + value.id + "'>";
+              html += "<p class='calendar-text'>" + text + "</p>";
+              html += "</div>";
+            }
           } else if (settings["syncCalendar"] == 2) {
             html += "<li>";
-            html += "<a href='#' class='ui-btn' data-corners='true' data-enhanced='true' value='Sync'>";
+            html += "<a href='#' class='ui-btn calendar-text-toggle " + arrowClass + "' data-id='" + value.id + "'>";
             html += "<p>" + day + "/" + month + "/" + year + "</p>";
             html += "<h4>" + title + "</h4>";
             html += "<p>" + notes + "</p>";
             html += "</div>";
-            html += "<p class='calendar-text'>" + text + "</p>";
             html += "</a>";
             html += "</li>";
+            if (text != '') {
+              html += "<div class='calendar-text-outer' data-id='" + value.id + "'>";
+              html += "<p class='calendar-text'>" + text + "</p>";
+              html += "</div>";
+            }
           } else if (settings["syncCalendar"] == 3) {
 
             if (startDate >= today) {
-              html += "<li>";
-              html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
+              html += "<li class='ui-li-has-alt ui-first-child'>";
+              html += "<a href='#' class='ui-btn calendar-text-toggle " + arrowClass + "' data-id='" + value.id + "'>";
               html += "<div class='calendar-event truncated'>";
-              html += "<p>" + day + "/" + month + "/" + year + "</p>";
               html += "<h4>" + title + "</h4>";
               html += "<p>" + notes + "</p>";
               html += "</div>";
-              html += "<p class='calendar-text'>" + text + "</p>";
+              html += "</a>";
+              html += "<a href='#' class='ui-btn ui-btn-icon-right ui-icon-recycle sync-btn' data-corners='true' data-enhanced='true' value='Sync' data-year='" + year + "' data-month='" + month + "' data-day='" + day + "' data-title='" + title + "' data-location='" + location + "' data-notes='" + notes + "'>";
               html += "</a>";
               html += "</li>";
+              if (text != '') {
+                html += "<div class='calendar-text-outer' data-id='" + value.id + "'>";
+                html += "<p class='calendar-text'>" + text + "</p>";
+                html += "</div>";
+              }
             }
           }
         });

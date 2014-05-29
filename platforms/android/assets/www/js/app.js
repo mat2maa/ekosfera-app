@@ -169,7 +169,7 @@ function sortDates(arr, order) {
   // Set up our variables, 2 date objects and a map of month names/numbers
   var ad = new Date(),
     bd = new Date();
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var months = ["јануари", "февруари", "март", "април", "мај", "јуни", "јули", "август", "септември", "октомври", "ноември", "декември"];
 
   arr.sort(function (a, b) {
     // Split the text into [ date, month ]
@@ -195,7 +195,7 @@ function sortDates(arr, order) {
 }
 
 function numToNameDate(str) {
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var months = ["јануари", "февруари", "март", "април", "мај", "јуни", "јули", "август", "септември", "октомври", "ноември", "декември"];
   return months[parseInt(str.split("/")[0] - 1)] + " " + parseInt(str.split("/")[1]);
 }
 
