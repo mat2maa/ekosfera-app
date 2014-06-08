@@ -1,0 +1,13 @@
+#show-survey .survey {
+  word-break:break-all;
+  clear: both;
+}
+
+#show-survey .survey-title,
+#show-survey .survey-article {
+  margin-top: 20px;
+}
+
+#show-survey .survey img {
+  max-width: 100%;
+}
