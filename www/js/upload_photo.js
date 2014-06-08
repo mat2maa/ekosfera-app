@@ -94,7 +94,9 @@
       },
 
       onFail: function (message) {
-        alert(message);
+        setTimeout(function() {
+          alert(message);
+        }, 0);
       },
 
       uploadPhoto: function (form, imageURI) {

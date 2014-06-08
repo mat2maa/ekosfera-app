@@ -32,7 +32,9 @@ var app = {
     console.log("app/onDeviceReady");
 
     app.receivedEvent('deviceready');
-    navigator.splashscreen.hide();
+    setTimeout(function() {
+      navigator.splashscreen.hide();
+    }, 5000);
 
     checkConnection();
     document.addEventListener("resume", checkConnection, false);
