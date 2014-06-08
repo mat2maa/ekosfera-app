@@ -3,7 +3,7 @@
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="nl.x-services.plugins.calendar"
-    version="4.0">
+    version="4.2.3">
 
    <name>Calendar</name>
 
@@ -36,7 +36,7 @@
    
    <!-- android -->
    <platform name="android">
-      <config-file target="config.xml" parent="/*">
+      <config-file target="res/xml/config.xml" parent="/*">
          <feature name="Calendar">
             <param name="android-package" value="nl.xservices.plugins.Calendar" />
          </feature>

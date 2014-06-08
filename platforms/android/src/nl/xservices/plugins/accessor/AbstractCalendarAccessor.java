@@ -33,10 +33,10 @@
 package nl.xservices.plugins.accessor;
 
 import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.util.Log;
 import org.apache.cordova.CordovaInterface;
@@ -139,6 +139,7 @@ public abstract class AbstractCalendarAccessor {
 
   protected enum KeyIndex {
     CALENDARS_ID,
+    CALENDARS_NAME,
     CALENDARS_VISIBLE,
     EVENTS_ID,
     EVENTS_CALENDAR_ID,
@@ -233,9 +234,9 @@ public abstract class AbstractCalendarAccessor {
   }
 
   private String[] getActiveCalendarIds() {
-    // Get only active calendars.
-    Cursor cursor = queryCalendars(new String[]{this.getKey(
-        KeyIndex.CALENDARS_ID)},
+    Cursor cursor = queryCalendars(new String[]{
+        this.getKey(KeyIndex.CALENDARS_ID)
+    },
         this.getKey(KeyIndex.CALENDARS_VISIBLE) + "=1", null, null);
     String[] calendarIds = null;
     if (cursor.moveToFirst()) {
@@ -248,6 +249,26 @@ public abstract class AbstractCalendarAccessor {
       } while (cursor.moveToNext());
     }
     return calendarIds;
+  }
+
+  public final JSONArray getActiveCalendars() throws JSONException {
+    Cursor cursor = queryCalendars(
+        new String[]{
+            this.getKey(KeyIndex.CALENDARS_ID),
+            this.getKey(KeyIndex.CALENDARS_NAME)
+        },
+        this.getKey(KeyIndex.CALENDARS_VISIBLE) + "=1", null, null
+    );
+    JSONArray calendarsWrapper = new JSONArray();
+    if (cursor.moveToFirst()) {
+      do {
+        JSONObject calendar = new JSONObject();
+        calendar.put("id", cursor.getString(cursor.getColumnIndex(this.getKey(KeyIndex.CALENDARS_ID))));
+        calendar.put("name", cursor.getString(cursor.getColumnIndex(this.getKey(KeyIndex.CALENDARS_NAME))));
+        calendarsWrapper.put(calendar);
+      } while (cursor.moveToNext());
+    }
+    return calendarsWrapper;
   }
 
   private Map<String, Event> fetchEventsAsMap(Event[] instances) {
@@ -425,7 +446,8 @@ public abstract class AbstractCalendarAccessor {
     return nrDeletedRecords > 0;
   }
 
-  public boolean createEvent(Uri eventsUri, String title, long startTime, long endTime, String description, String location) {
+  public boolean createEvent(Uri eventsUri, String title, long startTime, long endTime, String description,
+                             String location, Long firstReminderMinutes, Long secondReminderMinutes) {
     try {
       ContentResolver cr = this.cordova.getActivity().getContentResolver();
       ContentValues values = new ContentValues();
@@ -443,19 +465,53 @@ public abstract class AbstractCalendarAccessor {
 
       Log.d(LOG_TAG, "Added to ContentResolver");
 
+      // TODO ?
       getActiveCalendarIds();
 
-      ContentValues reminderValues = new ContentValues();
-      reminderValues.put("event_id", Long.parseLong(uri.getLastPathSegment()));
-      reminderValues.put("minutes", 5);
-      reminderValues.put("method", 1);
-      Uri reminderUri = cr.insert(Uri.parse(CONTENT_PROVIDER + CONTENT_PROVIDER_PATH_REMINDERS), reminderValues);
+      if (firstReminderMinutes != null) {
+        ContentValues reminderValues = new ContentValues();
+        reminderValues.put("event_id", Long.parseLong(uri.getLastPathSegment()));
+        reminderValues.put("minutes", firstReminderMinutes);
+        reminderValues.put("method", 1);
+        cr.insert(Uri.parse(CONTENT_PROVIDER + CONTENT_PROVIDER_PATH_REMINDERS), reminderValues);
+      }
+
+      if (secondReminderMinutes != null) {
+        ContentValues reminderValues = new ContentValues();
+        reminderValues.put("event_id", Long.parseLong(uri.getLastPathSegment()));
+        reminderValues.put("minutes", secondReminderMinutes);
+        reminderValues.put("method", 1);
+        cr.insert(Uri.parse(CONTENT_PROVIDER + CONTENT_PROVIDER_PATH_REMINDERS), reminderValues);
+      }
     } catch (Exception e) {
-      Log.e("Calendar", e.getMessage());
+      Log.e("Calendar", e.getMessage(), e);
       return false;
     }
 
     return true;
+  }
+
+  public void createCalendar(String calendarName) {
+    Uri calUri = CalendarContract.Calendars.CONTENT_URI;
+    ContentValues cv = new ContentValues();
+//    cv.put(CalendarContract.Calendars.ACCOUNT_NAME, yourAccountName);
+//    cv.put(CalendarContract.Calendars.ACCOUNT_TYPE, CalendarContract.ACCOUNT_TYPE_LOCAL);
+//    cv.put(CalendarContract.Calendars.NAME, "myname");
+    cv.put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, calendarName);
+//    cv.put(CalendarContract.Calendars.CALENDAR_COLOR, yourColor);
+//    cv.put(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL, CalendarContract.Calendars.CAL_ACCESS_OWNER);
+//    cv.put(CalendarContract.Calendars.OWNER_ACCOUNT, true);
+    cv.put(CalendarContract.Calendars.VISIBLE, 1);
+    cv.put(CalendarContract.Calendars.SYNC_EVENTS, 0);
+
+    calUri = calUri.buildUpon()
+//        .appendQueryParameter(CalendarContract.CALLER_IS_SYNCADAPTER, "false")
+//        .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, ACCOUNT_NAME)
+//        .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_TYPE, CalendarContract.ACCOUNT_TYPE_LOCAL)
+        .build();
+
+    Uri result = this.cordova.getActivity().getApplicationContext().getContentResolver().insert(calUri, cv);
+    int i=0;
   }
 
   public static boolean isAllDayEvent(final Date startDate, final Date endDate) {

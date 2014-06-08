@@ -1,4 +1,4 @@
-# PhoneGap Calendar plugin
+# PhoneGap Calendar plugin 
 
 for iOS and Android, by [Eddy Verbruggen](http://www.x-services.nl)
 
@@ -21,13 +21,13 @@ This plugin allows you to add events to the Calendar of the mobile device.
 * [Officially supported by PhoneGap Build](https://build.phonegap.com/plugins).
 
 ### iOS specifics
-* Supported methods: `find`, `create`, `modify`, `delete`.
+* Supported methods: `find`, `create`, `modify`, `delete`, ..
 * All methods work without showing the native calendar. Your app never looses control.
 * Tested on iOS 6 and 7.
 
 ### Android specifics
-* Supported methods on Android 4: `find`, `create` (silent and interactive), `delete`.
-* Supported methods on Android 2 and 3: `create`, interactive only: the user is presented a prefilled Calendar event. Pressing the hardware back button will give control back to your app.
+* Supported methods on Android 4: `find`, `create` (silent and interactive), `delete`, ..
+* Supported methods on Android 2 and 3: `create` interactive only: the user is presented a prefilled Calendar event. Pressing the hardware back button will give control back to your app.
 
 ## 2. Installation
 
@@ -107,7 +107,7 @@ Add the following xml to your `config.xml` to always use the latest version of t
 ```
 or to use this exact version:
 ```xml
-<gap:plugin name="nl.x-services.plugins.calendar" version="4.0" />
+<gap:plugin name="nl.x-services.plugins.calendar" version="4.2" />
 ```
 
 
@@ -127,12 +127,24 @@ Basic operations, you'll want to copy-paste this for testing purposes:
 
   // create a calendar (iOS only for now)
   window.plugins.calendar.createCalendar(calendarName,success,error);
+  // if you want to create a calendar with a specific color, pass in a JS object like this:
+  var createCalOptions = window.plugins.calendar.getCreateCalendarOptions();
+  createCalOptions.calendarName = "My Cal Name";
+  createCalOptions.calendarColor = "#FF0000"; // an optional hex color (with the # char), default is null, so the OS picks a color
+  window.plugins.calendar.createCalendar(createCalOptions,success,error);
 
   // delete a calendar (iOS only for now)
   window.plugins.calendar.deleteCalendar(calendarName,success,error);
 
   // create an event silently (on Android < 4 an interactive dialog is shown)
   window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+  
+  // create an event silently (on Android < 4 an interactive dialog is shown which doesn't use this options) with options.
+  // The options support only the reminders/alarms for now, but I will add more in the future:
+  var calOptions = window.plugins.calendar.getCalendarOptions(); // grab the defaults
+  calOptions.firstReminderMinutes = 120; // default is 60, pass in null for no reminder (alarm)
+  calOptions.secondReminderMinutes = 5;
+  window.plugins.calendar.createEventWithOptions(title,location,notes,startDate,endDate,calOptions,success,error);
 
   // create an event interactively (only supported on Android)
   window.plugins.calendar.createEventInteractively(title,location,notes,startDate,endDate,success,error);
@@ -142,6 +154,12 @@ Basic operations, you'll want to copy-paste this for testing purposes:
 
   // find events
   window.plugins.calendar.findEvent(title,location,notes,startDate,endDate,success,error);
+
+  // list all events in a date range (only supported on Android for now)
+  window.plugins.calendar.listEventsInRange(startDate,endDate,success,error);
+
+  // list all calendar names - returns this JS Object to the success callback: [{"id":"1", "name":"first"}, ..]
+  window.plugins.calendar.listCalendars(success,error);
 
   // find all events in a named calendar (iOS only for now)
   window.plugins.calendar.findAllEventsInNamedCalendar(calendarName,success,error);

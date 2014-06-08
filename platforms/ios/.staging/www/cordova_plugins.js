@@ -1,13 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/com.borismus.webintent/www/webintent.js",
-        "id": "com.borismus.webintent.WebIntent",
-        "clobbers": [
-            "WebIntent"
-        ]
-    },
-    {
         "file": "plugins/me.apla.cordova.app-preferences/www/apppreferences.js",
         "id": "me.apla.cordova.app-preferences.apppreferences",
         "clobbers": [
@@ -50,10 +43,31 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
+        "id": "org.apache.cordova.console.console",
+        "clobbers": [
+            "console"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.console/www/logger.js",
+        "id": "org.apache.cordova.console.logger",
+        "clobbers": [
+            "cordova.logger"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.device/www/device.js",
         "id": "org.apache.cordova.device.device",
         "clobbers": [
             "device"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.vibration/www/vibration.js",
+        "id": "org.apache.cordova.vibration.notification",
+        "merges": [
+            "navigator.notification"
         ]
     },
     {
@@ -172,6 +186,10 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.file/www/fileSystems.js",
+        "id": "org.apache.cordova.file.fileSystems"
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/requestFileSystem.js",
         "id": "org.apache.cordova.file.requestFileSystem",
         "clobbers": [
@@ -186,18 +204,24 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.file/www/ios/Entry.js",
-        "id": "org.apache.cordova.file.iosEntry",
-        "merges": [
-            "window.Entry"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.file/www/ios/FileSystem.js",
         "id": "org.apache.cordova.file.iosFileSystem",
         "merges": [
-            "window.FileSystem"
+            "FileSystem"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.file/www/fileSystems-roots.js",
+        "id": "org.apache.cordova.file.fileSystems-roots",
+        "runs": true
+    },
+    {
+        "file": "plugins/org.apache.cordova.file/www/fileSystemPaths.js",
+        "id": "org.apache.cordova.file.fileSystemPaths",
+        "merges": [
+            "cordova"
+        ],
+        "runs": true
     },
     {
         "file": "plugins/org.apache.cordova.file-transfer/www/FileTransferError.js",
@@ -312,6 +336,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.network-information/www/network.js",
         "id": "org.apache.cordova.network-information.network",
         "clobbers": [
@@ -325,40 +356,26 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
-        "id": "org.apache.cordova.splashscreen.SplashScreen",
-        "clobbers": [
-            "navigator.splashscreen"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.vibration/www/vibration.js",
-        "id": "org.apache.cordova.vibration.notification",
-        "merges": [
-            "navigator.notification"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "com.borismus.webintent": "1.0.0",
-    "me.apla.cordova.app-preferences": "0.4.0",
-    "nl.x-services.plugins.calendar": "4.0",
-    "org.apache.cordova.camera": "0.2.7",
-    "org.apache.cordova.device": "0.2.8",
-    "org.apache.cordova.dialogs": "0.2.8-dev",
-    "org.apache.cordova.file": "1.0.0",
-    "org.apache.cordova.file-transfer": "0.4.1",
-    "org.apache.cordova.geolocation": "0.3.7",
-    "org.apache.cordova.inappbrowser": "0.4.1-dev",
-    "org.apache.cordova.media": "0.2.8",
-    "org.apache.cordova.media-capture": "0.2.7",
-    "org.apache.cordova.network-information": "0.2.8",
-    "org.apache.cordova.splashscreen": "0.2.7",
-    "org.apache.cordova.vibration": "0.3.9-dev"
+    "me.apla.cordova.app-preferences": "0.4.2",
+    "nl.x-services.plugins.calendar": "4.2.3",
+    "org.apache.cordova.camera": "0.3.1-dev",
+    "org.apache.cordova.console": "0.2.10-dev",
+    "org.apache.cordova.device": "0.2.11-dev",
+    "org.apache.cordova.vibration": "0.3.10-dev",
+    "org.apache.cordova.dialogs": "0.2.9-dev",
+    "org.apache.cordova.file": "1.2.1-dev",
+    "org.apache.cordova.file-transfer": "0.4.5-dev",
+    "org.apache.cordova.geolocation": "0.3.9-dev",
+    "org.apache.cordova.inappbrowser": "0.5.1-dev",
+    "org.apache.cordova.media": "0.2.12-dev",
+    "org.apache.cordova.media-capture": "0.3.0",
+    "org.apache.cordova.splashscreen": "0.3.2-dev",
+    "org.apache.cordova.network-information": "0.2.8"
 }
 // BOTTOM OF METADATA
 });

@@ -54,6 +54,7 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
     EnumMap<KeyIndex, String> keys = new EnumMap<KeyIndex, String>(
         KeyIndex.class);
     keys.put(KeyIndex.CALENDARS_ID, Calendars._ID);
+    keys.put(KeyIndex.CALENDARS_NAME, Calendars.NAME);
     keys.put(KeyIndex.CALENDARS_VISIBLE, Calendars.VISIBLE);
     keys.put(KeyIndex.EVENTS_ID, Events._ID);
     keys.put(KeyIndex.EVENTS_CALENDAR_ID, Events.CALENDAR_ID);
@@ -120,10 +121,8 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
 
   @Override
   public boolean createEvent(Uri eventsUri, String title, long startTime, long endTime,
-                             String description, String location) {
-
+                             String description, String location, Long firstReminderMinutes, Long secondReminderMinutes) {
     eventsUri = eventsUri == null ? Uri.parse(CONTENT_PROVIDER + CONTENT_PROVIDER_PATH_EVENTS) : eventsUri;
-    return super.createEvent(eventsUri, title, startTime, endTime,
-        description, location);
+    return super.createEvent(eventsUri, title, startTime, endTime, description, location, firstReminderMinutes, secondReminderMinutes);
   }
 }

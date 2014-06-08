@@ -11,7 +11,7 @@
 
 -(NSArray*)findEKEventsWithTitle: (NSString *)title
                         location: (NSString *)location
-                         message: (NSString *)message
+                           notes: (NSString *)notes
                        startDate: (NSDate *)startDate
                          endDate: (NSDate *)endDate
                         calendar: (EKCalendar *) calendar;
@@ -19,7 +19,7 @@
 - (void)createCalendar:(CDVInvokedUrlCommand*)command;
 - (void)deleteCalendar:(CDVInvokedUrlCommand*)command;
 
-- (void)createEvent:(CDVInvokedUrlCommand*)command;
+- (void)createEventWithOptions:(CDVInvokedUrlCommand*)command;
 - (void)createEventInteractively:(CDVInvokedUrlCommand*)command;
 - (void)createEventInNamedCalendar:(CDVInvokedUrlCommand*)command;
 
@@ -28,6 +28,8 @@
 
 - (void)findEvent:(CDVInvokedUrlCommand*)command;
 - (void)findAllEventsInNamedCalendar:(CDVInvokedUrlCommand*)command;
+
+- (void)listCalendars:(CDVInvokedUrlCommand*)command;
 
 - (void)deleteEvent:(CDVInvokedUrlCommand*)command;
 - (void)deleteEventFromNamedCalendar:(CDVInvokedUrlCommand*)command;
