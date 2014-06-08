@@ -335,16 +335,16 @@ body {
 }
 
 .logout.ui-btn-right {
-  right: 76px;
-}
-
-.exit.ui-btn-right {
   right: 40px;
 }
 
-.logout.ui-btn-left {
-  left: 40px;
-}
+/*.exit.ui-btn-right {*/
+  /*right: 40px;*/
+/*}*/
+
+/*.logout.ui-btn-left {*/
+  /*left: 40px;*/
+/*}*/
 
 .refresh-useful-tip {
   margin-top: 0;
