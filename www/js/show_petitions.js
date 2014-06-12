@@ -28,7 +28,7 @@
         e.preventDefault();
         $(this).blur();
         var url = $(this).attr("href");
-        navigator.app.loadUrl(url, { openExternal:true });
+        window.open(url, "_system");
         return false;
       });
     },

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0CD4802C67844239A839FDD8 /* AppPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB756EBAF4A2FB74914F3 /* AppPreferences.m */; };
 		176A4121CB044983A80AD0AA /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE645C326F7C414792B35304 /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
