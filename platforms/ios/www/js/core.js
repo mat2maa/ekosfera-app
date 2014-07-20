@@ -19,11 +19,12 @@
 
         Core.bindEvents();
 
-        $("#checkConnection").enhanceWithin().popup();
         $("#openSettings").enhanceWithin().popup();
         $("#exitApp").enhanceWithin().popup();
-        $("#registrationSuccessful").enhanceWithin().popup();
       }
+
+      $("#checkConnection").enhanceWithin().popup();
+      $("#registrationSuccessful").enhanceWithin().popup();
 
     },
 

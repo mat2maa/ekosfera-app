@@ -109,11 +109,13 @@ function checkConnection() {
   states[Connection.CELL] = 'Cell generic connection';
   states[Connection.NONE] = 'No network connection';
 
-  if (states[networkState] == 'Unknown connection' || states[networkState] == 'Cell generic connection' || states[networkState] == 'No network connection') {
+  if (states[networkState] == 'Unknown connection' || states[networkState] == 'No network connection') {
     $("#checkConnection").popup("open");
   } else {
     $("#checkConnection").popup("close");
   }
+
+  console.log("networkState: " + states[networkState]);
 }
 
 function openSettings() {
